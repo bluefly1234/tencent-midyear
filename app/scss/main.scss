@@ -141,3 +141,95 @@ body {
 #all {
     background-image: url('../images/universal-bg.jpg');
 }
+
+#loading-bg {
+    background-image: url('../images/loading-bg.jpg');
+    z-index: 100;
+}
+
+#logo {
+    top: 523px;
+    left: 274px;
+    $logo: '../images/logo.png';
+    width: image-width($logo);
+    height: image-height($logo);
+    background-image: url($logo);
+    z-index: 100;
+}
+
+#loading-num {
+    top: 643px;
+    width: 100%;
+    font: {
+        size: 30px;
+        weight: 100;
+    }
+    text: {
+        align: center;
+    }
+    z-index: 100;
+}
+
+#city {
+    top: 460px;
+    left: 0;
+    $city: '../images/city.png';
+    width: image-width($city);
+    height: image-height($city);
+    background-image: url($city);
+}
+
+#cover-content1 {
+    top: 72px;
+    left: 165px;
+    $cover-content1: '../images/cover-content1.png';
+    width: image-width($cover-content1);
+    height: image-height($cover-content1);
+    background-image: url($cover-content1);
+}
+
+#cover-content2 {
+    top: 295px;
+    left: 112px;
+    $cover-content2: '../images/cover-content2.png';
+    width: image-width($cover-content2);
+    height: image-height($cover-content2);
+    background-image: url($cover-content2);
+}
+
+#computer-container {
+    top: 367px;
+    left: 76px;
+    width: 494px;
+    height: 406px;
+}
+
+#computer {
+    top: 20px;
+    $computer: '../images/computer.png';
+    width: image-width($computer);
+    height: image-height($computer);
+    background-image: url($computer);
+}
+
+#computer-content {
+    top: 234px;
+    left: 93px;
+    $computer-content: '../images/computer-content.png';
+    width: image-width($computer-content);
+    height: image-height($computer-content);
+    background-image: url($computer-content);
+}
+
+#light {
+    top: 0;
+    left: 31px;
+    $light: '../images/light.png';
+    width: image-width($light);
+    height: image-height($light);
+    background-image: url($light);
+}
+
+#loading-bg, #loading-num, #city, #cover, #computer-container {
+    display: none;
+}
