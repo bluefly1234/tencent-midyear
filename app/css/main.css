@@ -366,10 +366,6 @@ body {
   -webkit-overflow-scrolling: touch;
 }
 
-#all {
-  background-image: url("../images/universal-bg.jpg");
-}
-
 #loading-bg {
   background-image: url("../images/loading-bg.jpg");
   z-index: 100;
@@ -398,7 +394,6 @@ body {
   left: 0;
   width: 2176px;
   height: 1015px;
-  background-image: url("../images/city.png");
 }
 
 #cover-content1 {
@@ -450,7 +445,6 @@ body {
 #process {
   width: 640px;
   height: 1043px;
-  background-image: url("../images/star-bg.jpg");
 }
 
 #process-all {
@@ -577,7 +571,6 @@ body {
   right: 46px;
   width: 72px;
   height: 61px;
-  background-image: url("../images/music-off.png");
 }
 
 #arrow-up {
@@ -585,7 +578,6 @@ body {
   left: 50%;
   width: 50px;
   height: 29px;
-  background-image: url("../images/arrow-up.png");
   -moz-transform: translate3d(-50%, 0, 0);
   -ms-transform: translate3d(-50%, 0, 0);
   -webkit-transform: translate3d(-50%, 0, 0);
@@ -597,7 +589,6 @@ body {
   top: 50%;
   width: 29px;
   height: 50px;
-  background-image: url("../images/arrow-left.png");
   -moz-transform: translate3d(0, -50%, 0);
   -ms-transform: translate3d(0, -50%, 0);
   -webkit-transform: translate3d(0, -50%, 0);

@@ -139,7 +139,7 @@ body {
 }
 
 #all {
-    background-image: url('../images/universal-bg.jpg');
+    // background-image: url('../images/universal-bg.jpg');
 }
 
 #loading-bg {
@@ -176,7 +176,7 @@ body {
     $city: '../images/city.png';
     width: image-width($city);
     height: image-height($city);
-    background-image: url($city);
+    // background-image: url($city);
 }
 
 #cover-content1 {
@@ -234,7 +234,7 @@ body {
     $process: '../images/star-bg.jpg';
     width: image-width($process);
     height: image-height($process);
-    background-image: url($process);
+    // background-image: url($process);
 }
 
 #process-all {
@@ -335,7 +335,7 @@ $process-sprite-dimensions: true;
     $music: '../images/music-off.png';
     width: image-width($music);
     height: image-height($music);
-    background-image: url($music);
+    // background-image: url($music);
 }
 
 #arrow-up {
@@ -344,7 +344,7 @@ $process-sprite-dimensions: true;
     $arrow-up: '../images/arrow-up.png';
     width: image-width($arrow-up);
     height: image-height($arrow-up);
-    background-image: url($arrow-up);
+    // background-image: url($arrow-up);
     @include transform(translate3d(-50%, 0, 0));
 }
 
@@ -354,7 +354,7 @@ $process-sprite-dimensions: true;
     $arrow-left: '../images/arrow-left.png';
     width: image-width($arrow-left);
     height: image-height($arrow-left);
-    background-image: url($arrow-left);
+    // background-image: url($arrow-left);
     @include transform(translate3d(0, -50%, 0));
 }
 
