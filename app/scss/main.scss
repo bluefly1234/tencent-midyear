@@ -358,10 +358,10 @@ $process-sprite-dimensions: true;
     @include transform(translate3d(0, -50%, 0));
 }
 
-#city, #cover, #computer-container, #process,  #process-detail-container, #end {
+#cover, #computer-container, #process,  #process-detail-container, #end {
     display: none;
 }
 
-#music-control, #arrow-left, #arrow-up {
+#music-control, #arrow-left, #arrow-up, #city {
     visibility: hidden;
 }
