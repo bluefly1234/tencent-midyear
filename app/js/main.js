@@ -190,7 +190,7 @@ function hideCover() {
 // 二次抖动
 var logoShake2 = new TimelineMax({
     paused: true,
-    repeat: 7,
+    repeat: 5,
     yoyo: true,
     onComplete: showComputer
 });
@@ -229,10 +229,42 @@ function showComputer() {
         ],
 
         ease: Bounce.easeOut
-    })
+    }, '-=0.2')
     .fromTo('#computer-content', 0.8, {autoAlpha: 0, scale: 0}, {autoAlpha: 1, scale: 1})
     .fromTo('#light', 0.4 ,{autoAlpha: 0}, {autoAlpha: 1, delay: 1})
 }
+
+function showDetail() {
+    var detailShow = new TimelineMax({
+        delay: 0.5
+    });
+    detailShow.set('#process-detail-container', {display: 'block'})
+    .fromTo('#process-detail-container', 0.4, {autoAlpha: 0}, {autoAlpha: 1})
+    .fromTo('#detail', 0.6, {autoAlpha: 0, y: 300}, {autoAlpha: 1, y: 0}, '-=0.2')
+}
+
+function closeDetail() {
+    var detailHide = new TimelineMax();
+    detailHide.to(['#process-detail-container', '#detail'], 0.4, {autoAlpha: 0})
+    .set('#process-detail-container', {display: 'none'})
+}
+
+$('#close').on('touchstart', closeDetail);
+
+$('#cf').on('touchstart', function () {
+    $('#detail-content').css('background-image', 'url(images/bc.png)');
+    showDetail();
+});
+
+$('#wy').on('touchstart', function () {
+    $('#detail-content').css('background-image', 'url(images/wy.png)');
+    showDetail();
+});
+
+$('#hy').on('touchstart', function () {
+    $('#detail-content').css('background-image', 'url(images/yc.png)');
+    showDetail();
+});
 
 
 // computer抖动
@@ -277,7 +309,7 @@ var processFloat = new TimelineMax({
     repeat: -1,
     yoyo: true
 });
-processFloat.to('#process-all', 2, {y: -60, ease: Power1.easeInOut})
+processFloat.to('#process-all', 2, {y: -60, ease: Power1.easeInOut});
 
 (function($) {
     $(document).ready(function() {
