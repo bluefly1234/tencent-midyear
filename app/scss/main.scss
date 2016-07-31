@@ -311,6 +311,57 @@ $process-sprite-dimensions: true;
     // background-image: url($detail-content);
 }
 
-#loading-bg, #loading-num, #city, #cover, #computer-container, #process,  #process-detail-container {
+#end-content1 {
+    top: 282px;
+    left: 162px;
+    $end-content1: '../images/end-content1.png';
+    width: image-width($end-content1);
+    height: image-height($end-content1);
+    background-image: url($end-content1);
+}
+
+#end-content2 {
+    bottom: 36px;
+    left: 200px;
+    $end-content2: '../images/end-content2.png';
+    width: image-width($end-content2);
+    height: image-height($end-content2);
+    background-image: url($end-content2);
+}
+
+#music-control {
+    top: 100px;
+    right: 46px;
+    $music: '../images/music-off.png';
+    width: image-width($music);
+    height: image-height($music);
+    background-image: url($music);
+}
+
+#arrow-up {
+    bottom: 0;
+    left: 50%;
+    $arrow-up: '../images/arrow-up.png';
+    width: image-width($arrow-up);
+    height: image-height($arrow-up);
+    background-image: url($arrow-up);
+    @include transform(translate3d(-50%, 0, 0));
+}
+
+#arrow-left {
+    right: 0;
+    top: 50%;
+    $arrow-left: '../images/arrow-left.png';
+    width: image-width($arrow-left);
+    height: image-height($arrow-left);
+    background-image: url($arrow-left);
+    @include transform(translate3d(0, -50%, 0));
+}
+
+#city, #cover, #computer-container, #process,  #process-detail-container, #end {
     display: none;
+}
+
+#music-control, #arrow-left, #arrow-up {
+    visibility: hidden;
 }

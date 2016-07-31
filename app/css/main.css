@@ -556,8 +556,60 @@ body {
   height: 493px;
 }
 
-#loading-bg, #loading-num, #city, #cover, #computer-container, #process, #process-detail-container {
+#end-content1 {
+  top: 282px;
+  left: 162px;
+  width: 334px;
+  height: 509px;
+  background-image: url("../images/end-content1.png");
+}
+
+#end-content2 {
+  bottom: 36px;
+  left: 200px;
+  width: 237px;
+  height: 76px;
+  background-image: url("../images/end-content2.png");
+}
+
+#music-control {
+  top: 100px;
+  right: 46px;
+  width: 72px;
+  height: 61px;
+  background-image: url("../images/music-off.png");
+}
+
+#arrow-up {
+  bottom: 0;
+  left: 50%;
+  width: 50px;
+  height: 29px;
+  background-image: url("../images/arrow-up.png");
+  -moz-transform: translate3d(-50%, 0, 0);
+  -ms-transform: translate3d(-50%, 0, 0);
+  -webkit-transform: translate3d(-50%, 0, 0);
+  transform: translate3d(-50%, 0, 0);
+}
+
+#arrow-left {
+  right: 0;
+  top: 50%;
+  width: 29px;
+  height: 50px;
+  background-image: url("../images/arrow-left.png");
+  -moz-transform: translate3d(0, -50%, 0);
+  -ms-transform: translate3d(0, -50%, 0);
+  -webkit-transform: translate3d(0, -50%, 0);
+  transform: translate3d(0, -50%, 0);
+}
+
+#city, #cover, #computer-container, #process, #process-detail-container, #end {
   display: none;
+}
+
+#music-control, #arrow-left, #arrow-up {
+  visibility: hidden;
 }
 
 /*# sourceMappingURL=main.css.map */
