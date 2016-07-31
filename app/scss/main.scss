@@ -230,6 +230,87 @@ body {
     background-image: url($light);
 }
 
-#loading-bg, #loading-num, #city, #cover, #computer-container {
+#process {
+    $process: '../images/star-bg.jpg';
+    width: image-width($process);
+    height: image-height($process);
+    background-image: url($process);
+}
+
+#process-all {
+    $line: '../images/line.png';
+    width: image-width($line);
+    height: image-height($line);
+    background-image: url($line);
+}
+
+/*=================process start=======================*/
+// process sprite 设置
+$process-layout:smart;
+$process-spacing:10px;
+$process-sprite-dimensions: true;
+@import "process/*.png";
+@include  all-process-sprites;
+
+#cf {
+    top: 26px;
+    left: 115px;
+}
+
+#rc {
+    top: 321px;
+    left: 0;
+}
+
+#hy {
+    top: 481px;
+    left: 372px;
+}
+
+#hd {
+    top: 814px;
+    left: 76px;
+}
+
+#wy {
+    top: 1130px;
+    left: 363px;
+}
+
+#hyyq {
+    top: 1142px;
+    left: 4px;
+}
+
+#process-detail-container {
+    background: rgba(0, 0, 0, 0.88);
+}
+
+#detail {
+    top: 400px;
+    left: 74px;
+    $detail: '../images/detail.png';
+    width: image-width($detail);
+    height: image-height($detail);
+    background-image: url($detail);
+}
+
+#close {
+    top: -70px;
+    right: 23px;
+    $close: '../images/close.png';
+    width: image-width($close);
+    height: image-height($close);
+    background-image: url($close);
+}
+
+#detail-content {
+    $detail-content: '../images/yc.png';
+    width: image-width($detail-content);
+    height: image-height($detail-content);
+    // background-image: url($detail-content);
+}
+
+#loading-bg, #loading-num, #city, #cover, #computer-container, #process,  #process-detail-container {
     display: none;
 }
