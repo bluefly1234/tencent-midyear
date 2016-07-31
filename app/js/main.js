@@ -5,6 +5,7 @@
 var jumpTime = 0.8;
 // 预加载
 var sourceArr = [
+    'images/loading-bg.jpg',
     'images/universal-bg.jpg',
     'images/arrow-left.png',
     'images/arrow-up.png',
@@ -18,9 +19,9 @@ var sourceArr = [
     'images/detail.png',
     'images/end-content1.png',
     'images/end-content2.png',
+    'images/icon.jpg',
     'images/light.png',
     'images/line.png',
-    'images/loading-bg.jpg',
     'images/logo.png',
     'images/music-off.png',
     'images/music-on.png',
@@ -91,7 +92,6 @@ function pauseBM() {
 
 // 音乐控制
 $("#music-control").on('touchstart', function(){
-   console.log('111');
  if(bgAud.paused){
    playBM();
  }else{
@@ -102,7 +102,7 @@ $("#music-control").on('touchstart', function(){
 // 初始抖动
 var logoShake1 = new TimelineMax({
     paused: true,
-    repeat: 11,
+    repeat: 7,
     yoyo: true,
     onComplete: showCity
 });
@@ -385,19 +385,20 @@ function hideProcess() {
         onComplete: showEnd
     });
     processHide.to('#process', 0.4, {autoAlpha: 0})
-    .set('#process', {display: 'none'})
+    .set(['#process', '#process-detail-container'], {display: 'none'})
 }
 
 function showEnd() {
     var endShow = new TimelineMax();
     endShow.set('#end', {display: 'block', perspective: 500})
+    .set('#logo', {scale: 0.8})
     .to('#logo', 0.6, {
         autoAlpha: 1,
         onStart: function () {
             logoRotation.play(0);
         }
     })
-    .to('#logo', 0.8, {x: '-=70', y: '-=346', ease: Back.easeOut.config(1.6)})
+    .to('#logo', 0.8, {x: -60, y: -200, ease: Back.easeOut.config(1.6)})
     .fromTo('#end-content1', 1.2, {autoAlpha: 0, z: -300}, {autoAlpha: 1, z: 0}, '-=0.8')
     .fromTo('#end-content2', 0.6, {autoAlpha: 0, y: 100}, {autoAlpha: 1, y: 0})
 
