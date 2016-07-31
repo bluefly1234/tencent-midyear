@@ -45,9 +45,8 @@ new mo.Loader(sourceArr,{
             onStart: setImages,
             delay: 2,
             onComplete: function () {
-                // TweenMax.set('#music-control', {display: 'block', autoAlpha: 1});
-                // bgAud.play();
-                // showCity();
+                TweenMax.set('#music-control', {autoAlpha: 1});
+                bgAud.play();
                 logoShake1.play(0);
 
             }
@@ -65,6 +64,40 @@ function setImages() {
     $('#arrow-up').css('background-image', 'url(images/arrow-up.png)');
     $('#arrow-left').css('background-image', 'url(images/arrow-left.png)');
 }
+
+// 音乐初始化
+var bgAud = $("#bg-music")[0];
+console.log(bgAud);
+function initAud(){
+ if (bgAud.currentTime){
+     console.log("背景音乐开始播放");
+     $('#music-control').css('background-image', 'url(images/music-on.png)');
+     bgAud.removeEventListener("timeupdate", initAud, false); //只执行一次，防止控制按钮动画无法暂停
+ }
+}
+
+bgAud.addEventListener("timeupdate", initAud, false);
+
+function playBM() {
+ bgAud.play();
+ $('#music-control').css('background-image', 'url(images/music-on.png)');
+}
+
+function pauseBM() {
+ bgAud.pause();
+
+ $('#music-control').css('background-image', 'url(images/music-off.png)');
+}
+
+// 音乐控制
+$("#music-control").on('touchstart', function(){
+   console.log('111');
+ if(bgAud.paused){
+   playBM();
+ }else{
+   pauseBM();
+ }
+})
 
 // 初始抖动
 var logoShake1 = new TimelineMax({
@@ -310,6 +343,65 @@ var processFloat = new TimelineMax({
     yoyo: true
 });
 processFloat.to('#process-all', 2, {y: -60, ease: Power1.easeInOut});
+
+Draggable.create("#process", {type:"scrollTop",
+    edgeResistance:1,
+    throwProps:true,
+    onDragStart: function () {
+        showLeftArrow();
+        // 左滑
+        touch.on($("#process"), 'swipeleft', function(ev){
+          console.log(ev.type + ' process');
+          hideLeftArrow();
+          hideProcess();
+        });
+    },
+    onThrowUpdate: function () {
+      console.log(this.y);
+    },
+});
+
+// 滑动指示箭头动画
+var leftGuide = new TimelineMax({yoyo: true, repeat: -1, paused: true});
+leftGuide.to($('#arrow-left'), 0.8, {x: '-=30', ease: Power0.easeNone})
+
+function showLeftArrow() {
+    TweenMax.fromTo($('#arrow-left'), 0.5, {autoAlpha: 0}, {autoAlpha: 1, ease: Power1.easeIn, onComplete: function () {
+        leftGuide.play();
+    }});
+} // 显示左滑箭头并播放箭头动画
+
+function hideLeftArrow() {
+    TweenMax.to($('#arrow-left'), 0.5, {autoAlpha: 0, onComplete: function () {
+        leftGuide.pause(0);
+    }});
+} // 隐藏左滑箭头并停止箭头动画
+
+function hideProcess() {
+    var processHide = new TimelineMax({
+        onStart: function () {
+            processFloat.pause(0);
+        },
+        onComplete: showEnd
+    });
+    processHide.to('#process', 0.4, {autoAlpha: 0})
+    .set('#process', {display: 'none'})
+}
+
+function showEnd() {
+    var endShow = new TimelineMax();
+    endShow.set('#end', {display: 'block', perspective: 500})
+    .to('#logo', 0.6, {
+        autoAlpha: 1,
+        onStart: function () {
+            logoRotation.play(0);
+        }
+    })
+    .to('#logo', 0.8, {x: '-=70', y: '-=346', ease: Back.easeOut.config(1.6)})
+    .fromTo('#end-content1', 1.2, {autoAlpha: 0, z: -300}, {autoAlpha: 1, z: 0}, '-=0.8')
+    .fromTo('#end-content2', 0.6, {autoAlpha: 0, y: 100}, {autoAlpha: 1, y: 0})
+
+}
 
 (function($) {
     $(document).ready(function() {
