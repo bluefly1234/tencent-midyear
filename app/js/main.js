@@ -100,7 +100,9 @@ var logoRotation = new TimelineMax({
 logoRotation.to('#logo', 1.2, {rotation: 360, ease: Power0.easeNone});
 
 function moveLogo() {
-    var logoMove = new TimelineMax();
+    var logoMove = new TimelineMax({
+        onComplete: showCover
+    });
     logoMove.to('#logo', jumpTime, {
         bezier:
         [
@@ -151,10 +153,131 @@ function moveLogo() {
 
         ease: Back.easeIn.config(1.2)
     })
+    .to('#city', 0.6, {autoAlpha: 0})
+    .set('#city', {display: 'none'})
+}
 
+function showCover() {
+    var coverShow = new TimelineMax({
+        onComplete: function () {
+            showArrow();
+            // 左滑
+            touch.on($("#cover"), 'swipeup', function(ev){
+              console.log(ev.type + ' cover');
+              hideArrow();
+              hideCover();
+            });
+        }
+    });
+    coverShow.set('#logo', {x: '-=640', y: '-=1100'})
+    .set('#cover', {display: 'block'})
+    .add('coverLogo')
+    .to('#logo', 0.6, {x: '+=40', y: '+=130', ease: Back.easeOut.config(1.2)}, 'coverLogo')
+    .from('#cover-content1', 0.6, {autoAlpha: 0, x: '+=240', ease: Back.easeOut.config(1.2)}, 'coverLogo')
+    .from('#cover-content2', 0.6, {autoAlpha: 0, y: 200})
+}
+
+function hideCover() {
+    var coverHide = new TimelineMax({
+        onStart: function () {
+            logoShake2.play(0);
+        }
+    });
+    coverHide.to('#cover', 0.6, {autoAlpha: 0})
+    .set('#cover', {display: 'none'})
+}
+
+// 二次抖动
+var logoShake2 = new TimelineMax({
+    paused: true,
+    repeat: 7,
+    yoyo: true,
+    onComplete: showComputer
+});
+logoShake2.to('#logo', 0.1, {x: '-=20', ease: Power1.easeInOut});
+
+// 滑动指示箭头动画
+var upGuide = new TimelineMax({yoyo: true, repeat: -1, paused: true});
+upGuide.to($('#arrow-up'), 0.8, {y: '-=30', ease: Power0.easeNone})
+
+function showArrow() {
+    TweenMax.fromTo($('#arrow-up'), 0.5, {autoAlpha: 0}, {autoAlpha: 1, ease: Power1.easeIn, onComplete: function () {
+        upGuide.play();
+    }});
+} // 显示左滑箭头并播放箭头动画
+
+function hideArrow() {
+    TweenMax.to($('#arrow-up'), 0.5, {autoAlpha: 0, onComplete: function () {
+        upGuide.pause(0);
+    }});
+} // 隐藏左滑箭头并停止箭头动画
+
+function showComputer() {
+    var computerShow = new TimelineMax({
+        onComplete: function () {
+            computerShake.play(0);
+        }
+    });
+    computerShow.set('#computer-container', {display: 'block'})
+    .add('computerStart')
+    .fromTo('#computer-container', 0.6, {autoAlpha: 0, scale: 0}, {autoAlpha: 1, scale: 1, ease: Back.easeOut.config(1.6)}, 'computerStart')
+    .to('#logo', jumpTime, {
+        bezier:
+        [
+            {x:'+=80', y: '+=16'},
+            {x: '+=230', y: '+=620'}
+        ],
+
+        ease: Bounce.easeOut
+    })
+    .fromTo('#computer-content', 0.8, {autoAlpha: 0, scale: 0}, {autoAlpha: 1, scale: 1})
+    .fromTo('#light', 0.4 ,{autoAlpha: 0}, {autoAlpha: 1, delay: 1})
 }
 
 
+// computer抖动
+var computerShake = new TimelineMax({
+    paused: true,
+    repeat: 11,
+    yoyo: true,
+    onComplete: hideComputer
+});
+computerShake.to('#computer-container', 0.1, {x: '-=30', ease: Power1.easeInOut});
+
+// 隐藏电脑
+function hideComputer() {
+    var computerHide = new TimelineMax({
+        onComplete: showProcess
+    });
+    computerHide.add('computerHideStart')
+    .to('#computer-container', 0.6, {scale: 6, ease: Power3.easeOut, force3D: true}, 'computerHideStart')
+    .to('#logo', 0.6, {
+        autoAlpha: 0,
+        onComplete: function () {
+            logoRotation.pause(0);
+        }
+    }, 'computerHideStart')
+    .to('#computer-container', 0.4, {autoAlpha: 0})
+    .set('#computer-container', {display: 'none', scale: 0})
+}
+
+// 显示流程界面
+function showProcess() {
+    var processShow = new TimelineMax({
+        onComplete: function () {
+            processFloat.play(0);
+        }
+    });
+    processShow.set('#process', {display: 'block', autoAlpha: 1})
+    .fromTo('#process', 0.6, {autoAlpha: 0}, {autoAlpha: 1})
+}
+
+var processFloat = new TimelineMax({
+    paused: true,
+    repeat: -1,
+    yoyo: true
+});
+processFloat.to('#process-all', 2, {y: -60, ease: Power1.easeInOut})
 
 (function($) {
     $(document).ready(function() {
