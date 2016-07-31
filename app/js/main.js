@@ -5,6 +5,7 @@
 var jumpTime = 0.8;
 // 预加载
 var sourceArr = [
+    'images/logo.png',
     'images/loading-bg.jpg',
     'images/universal-bg.jpg',
     'images/arrow-left.png',
@@ -22,7 +23,6 @@ var sourceArr = [
     'images/icon.jpg',
     'images/light.png',
     'images/line.png',
-    'images/logo.png',
     'images/music-off.png',
     'images/music-on.png',
     'images/process-s8b97f2c170.png',
