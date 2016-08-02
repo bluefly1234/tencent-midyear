@@ -339,30 +339,29 @@ $process-sprite-dimensions: true;
     // background-image: url($music);
 }
 
-#arrow-up {
-    bottom: 0;
-    left: 50%;
-    $arrow-up: '../images/arrow-up.png';
-    width: image-width($arrow-up);
-    height: image-height($arrow-up);
-    // background-image: url($arrow-up);
-    @include transform(translate3d(-50%, 0, 0));
-}
 
 #arrow-left {
-    right: 0;
-    top: 50%;
+    left: 10px;
+    bottom: 10px;
     $arrow-left: '../images/arrow-left.png';
     width: image-width($arrow-left);
     height: image-height($arrow-left);
     // background-image: url($arrow-left);
-    @include transform(translate3d(0, -50%, 0));
+}
+
+#arrow-right {
+    right: 10px;
+    bottom: 10px;
+    $arrow-right: '../images/arrow-right.png';
+    width: image-width($arrow-right);
+    height: image-height($arrow-right);
+    // background-image: url($arrow-left);
 }
 
 #cover, #computer-container, #process,  #process-detail-container, #end {
     display: none;
 }
 
-#music-control, #arrow-left, #arrow-up, #city {
+#music-control, #arrow-left, #arrow-right, #city {
     visibility: hidden;
 }

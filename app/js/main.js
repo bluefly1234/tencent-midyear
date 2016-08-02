@@ -9,7 +9,7 @@ var sourceArr = [
     'images/loading-bg.jpg',
     'images/universal-bg.jpg',
     'images/arrow-left.png',
-    'images/arrow-up.png',
+    'images/right.png',
     'images/bc.png',
     'images/city.png',
     'images/close.png',
@@ -65,6 +65,7 @@ function setImages() {
     $('#process').css('background-image', 'url(images/star-bg.jpg)');
     $('#arrow-up').css('background-image', 'url(images/arrow-up.png)');
     $('#arrow-left').css('background-image', 'url(images/arrow-left.png)');
+    $('#arrow-right').css('background-image', 'url(images/arrow-right.png)');
 }
 
 // 音乐初始化
@@ -199,7 +200,7 @@ function showCover() {
         onComplete: function () {
             showArrow();
             // 左滑
-            touch.on($("#cover"), 'swipeup', function(ev){
+            touch.on($("#cover"), 'swipeleft', function(ev){
               console.log(ev.type + ' cover');
               hideArrow();
               hideCover();
@@ -234,18 +235,36 @@ var logoShake2 = new TimelineMax({
 logoShake2.to('#logo', 0.1, {x: '-=20', ease: Power1.easeInOut});
 
 // 滑动指示箭头动画
-var upGuide = new TimelineMax({yoyo: true, repeat: -1, paused: true});
-upGuide.to($('#arrow-up'), 0.8, {y: '-=30', ease: Power0.easeNone})
+var arrowGuide = new TimelineMax({yoyo: true, repeat: -1, paused: true});
+arrowGuide.add('arrowStart')
+.to($('#arrow-left'), 0.8, {x: '+=30', ease: Power0.easeNone}, 'arrowStart')
+.to($('#arrow-right'), 0.8, {x: '-=30', ease: Power0.easeNone}, 'arrowStart')
 
 function showArrow() {
-    TweenMax.fromTo($('#arrow-up'), 0.5, {autoAlpha: 0}, {autoAlpha: 1, ease: Power1.easeIn, onComplete: function () {
-        upGuide.play();
+    TweenMax.fromTo(['#arrow-left', '#arrow-right'], 0.5, {autoAlpha: 0}, {autoAlpha: 1, ease: Power1.easeIn, onComplete: function () {
+        arrowGuide.play();
     }});
 } // 显示左滑箭头并播放箭头动画
 
 function hideArrow() {
-    TweenMax.to($('#arrow-up'), 0.5, {autoAlpha: 0, onComplete: function () {
-        upGuide.pause(0);
+    TweenMax.to(['#arrow-left', '#arrow-right'], 0.5, {autoAlpha: 0, onComplete: function () {
+        arrowGuide.pause(0);
+    }});
+} // 隐藏左滑箭头并停止箭头动画
+
+// 滑动指示箭头动画
+var arrowLeftGuide = new TimelineMax({yoyo: true, repeat: -1, paused: true});
+arrowLeftGuide.to($('#arrow-left'), 0.8, {x: '+=30', ease: Power0.easeNone})
+
+function showleftArrow() {
+    TweenMax.fromTo('#arrow-left', 0.5, {autoAlpha: 0}, {autoAlpha: 1, ease: Power1.easeIn, onComplete: function () {
+        arrowLeftGuide.play();
+    }});
+} // 显示左滑箭头并播放箭头动画
+
+function hideLeftArrow() {
+    TweenMax.to('#arrow-left', 0.5, {autoAlpha: 0, onComplete: function () {
+        arrowLeftGuide.pause(0);
     }});
 } // 隐藏左滑箭头并停止箭头动画
 
@@ -382,31 +401,15 @@ Draggable.create("#process", {type:"scrollTop",
     edgeResistance:1,
     throwProps:true,
     onDragStart: function () {
-        showLeftArrow();
+        showArrow();
         // 左滑
         touch.on($("#process"), 'swipeleft', function(ev){
           console.log(ev.type + ' process');
-          hideLeftArrow();
+          hideArrow();
           hideProcess();
         });
     }
 });
-
-// 滑动指示箭头动画
-var leftGuide = new TimelineMax({yoyo: true, repeat: -1, paused: true});
-leftGuide.to($('#arrow-left'), 0.8, {x: '-=30', ease: Power0.easeNone})
-
-function showLeftArrow() {
-    TweenMax.fromTo($('#arrow-left'), 0.5, {autoAlpha: 0}, {autoAlpha: 1, ease: Power1.easeIn, onComplete: function () {
-        leftGuide.play();
-    }});
-} // 显示左滑箭头并播放箭头动画
-
-function hideLeftArrow() {
-    TweenMax.to($('#arrow-left'), 0.5, {autoAlpha: 0, onComplete: function () {
-        leftGuide.pause(0);
-    }});
-} // 隐藏左滑箭头并停止箭头动画
 
 function hideProcess() {
     var processHide = new TimelineMax({
@@ -424,7 +427,11 @@ function hideProcess() {
 }
 
 function showEnd() {
-    var endShow = new TimelineMax();
+    var endShow = new TimelineMax({
+        onComplete: function () {
+            showleftArrow();
+        }
+    });
     endShow.set('#end', {display: 'block', perspective: 500})
     .set('#logo', {scale: 0.8})
     .to('#logo', 0.6, {
