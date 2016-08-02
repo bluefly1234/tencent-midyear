@@ -205,6 +205,13 @@ function showCover() {
               hideArrow();
               hideCover();
             });
+
+            // 右滑
+            touch.on($("#cover"), 'swiperight', function(ev){
+              console.log(ev.type + ' cover');
+              hideArrow();
+              window.location.reload();
+            });
         }
     });
     coverShow.set('#logo', {x: '-=640', y: '-=1100'})
