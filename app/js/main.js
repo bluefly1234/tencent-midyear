@@ -20,6 +20,7 @@ var sourceArr = [
     'images/detail.png',
     'images/end-content1.png',
     'images/end-content2.png',
+    'images/hyyq.png',
     'images/icon.jpg',
     'images/light.png',
     'images/line.png',
@@ -302,6 +303,35 @@ $('#hy').on('touchstart', function () {
     showDetail();
 });
 
+$('#hyyq').on('touchstart', function () {
+    $('#detail-content').css('background-image', 'url(images/hyyq.png)');
+    showDetail();
+});
+
+var cfBreath = new TimelineMax({
+    paused: true,
+});
+
+cfBreath.to('#cf', 1.6, {autoAlpha: 0.6, ease: Power1.easeInOut, repeat: -1, yoyo: true});
+
+var hyBreath = new TimelineMax({
+    paused: true,
+});
+
+hyBreath.to('#hy', 1.6, {autoAlpha: 0.5, ease: Power1.easeInOut, repeat: -1, yoyo: true});
+
+var wyBreath = new TimelineMax({
+    paused: true,
+});
+
+wyBreath.to('#wy', 1.6, {autoAlpha: 0.5, ease: Power1.easeInOut, repeat: -1, yoyo: true});
+
+var hyyqBreath = new TimelineMax({
+    paused: true,
+});
+
+hyyqBreath.to('#hyyq', 1.6, {autoAlpha: 0.5, ease: Power1.easeInOut, repeat: -1, yoyo: true});
+
 
 // computer抖动
 var computerShake = new TimelineMax({
@@ -331,6 +361,10 @@ function showProcess() {
     var processShow = new TimelineMax({
         onComplete: function () {
             processFloat.play(0);
+            cfBreath.play(0);
+            hyBreath.play(0);
+            wyBreath.play(0);
+            hyyqBreath.play(0);
         }
     });
     processShow.set('#process', {display: 'block', autoAlpha: 1})
@@ -378,6 +412,10 @@ function hideProcess() {
     var processHide = new TimelineMax({
         onStart: function () {
             processFloat.pause(0);
+            cfBreath.pause(0);
+            hyBreath.pause(0);
+            wyBreath.pause(0);
+            hyyqBreath.pause(0);
         },
         onComplete: showEnd
     });
