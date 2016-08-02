@@ -134,7 +134,10 @@ logoRotation.to('#logo', 1.2, {rotation: 360, ease: Power0.easeNone});
 
 function moveLogo() {
     var logoMove = new TimelineMax({
-        onComplete: showCover
+        onComplete: function () {
+            showCover();
+            logoRotation.pause(0);
+        }
     });
     logoMove.to('#logo', jumpTime, {
         bezier:
@@ -317,10 +320,7 @@ function hideComputer() {
     computerHide.add('computerHideStart')
     .to('#computer-container', 0.6, {scale: 6, ease: Power3.easeOut, force3D: true}, 'computerHideStart')
     .to('#logo', 0.6, {
-        autoAlpha: 0,
-        onComplete: function () {
-            logoRotation.pause(0);
-        }
+        autoAlpha: 0
     }, 'computerHideStart')
     .to('#computer-container', 0.4, {autoAlpha: 0})
     .set('#computer-container', {display: 'none', scale: 0})
@@ -355,10 +355,7 @@ Draggable.create("#process", {type:"scrollTop",
           hideLeftArrow();
           hideProcess();
         });
-    },
-    onThrowUpdate: function () {
-      console.log(this.y);
-    },
+    }
 });
 
 // 滑动指示箭头动画
@@ -393,10 +390,7 @@ function showEnd() {
     endShow.set('#end', {display: 'block', perspective: 500})
     .set('#logo', {scale: 0.8})
     .to('#logo', 0.6, {
-        autoAlpha: 1,
-        onStart: function () {
-            logoRotation.play(0);
-        }
+        autoAlpha: 1
     })
     .to('#logo', 0.8, {x: -60, y: -200, ease: Back.easeOut.config(1.6)})
     .fromTo('#end-content1', 1.2, {autoAlpha: 0, z: -300}, {autoAlpha: 1, z: 0}, '-=0.8')

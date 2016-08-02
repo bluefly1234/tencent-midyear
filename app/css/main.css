@@ -527,6 +527,7 @@ body {
 
 #process-detail-container {
   background: rgba(0, 0, 0, 0.88);
+  z-index: 10;
 }
 
 #detail {
