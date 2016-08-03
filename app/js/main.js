@@ -68,6 +68,7 @@ function setImages() {
     $('#arrow-up').css('background-image', 'url(images/arrow-up.png)');
     $('#arrow-left').css('background-image', 'url(images/arrow-left.png)');
     $('#arrow-right').css('background-image', 'url(images/arrow-right.png)');
+    $('#bc-detail').css('background-image', 'url(images/bc.png)');
 }
 
 // 音乐初始化
@@ -342,30 +343,38 @@ function showDetail() {
 
 function closeDetail() {
     var detailHide = new TimelineMax();
-    detailHide.to(['#process-detail-container', '#detail'], 0.4, {autoAlpha: 0})
+    detailHide.to(['#process-detail-container', '#detail', '#detail-content', '#bc-content'], 0.4, {autoAlpha: 0})
     .set('#process-detail-container', {display: 'none'})
 }
 
 $('#close').on('touchstart', closeDetail);
 
 $('#cf').on('touchstart', function () {
-    $('#detail-content').css('background-image', 'url(images/bc.png)');
+    TweenMax.set('#bc-content', {autoAlpha: 1});
     showDetail();
 });
 
 $('#wy').on('touchstart', function () {
     $('#detail-content').css('background-image', 'url(images/wy.png)');
+    TweenMax.set('#detail-content', {autoAlpha: 1});
     showDetail();
 });
 
 $('#hy').on('touchstart', function () {
     $('#detail-content').css('background-image', 'url(images/yc.png)');
+    TweenMax.set('#detail-content', {autoAlpha: 1});
     showDetail();
 });
 
 $('#hyyq').on('touchstart', function () {
     $('#detail-content').css('background-image', 'url(images/hyyq.png)');
+    TweenMax.set('#detail-content', {autoAlpha: 1});
     showDetail();
+});
+
+Draggable.create("#bc-content", {type:"scrollTop",
+    edgeResistance:1,
+    throwProps:true
 });
 
 var cfBreath = new TimelineMax({

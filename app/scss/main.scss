@@ -312,6 +312,23 @@ $process-sprite-dimensions: true;
     // background-image: url($detail-content);
 }
 
+#bc-content {
+    top: 57px;
+    left: 57px;
+    width: 388px;
+    height: 356px;
+    // background: rgba(255, 0, 0, 0.3);
+    overflow-x: hidden;
+    overflow-y: scroll; /* has to be scroll, not auto */
+    -webkit-overflow-scrolling: touch;
+}
+
+#bc-detail {
+    $bc: '../images/bc.png';
+    width: image-width($bc);
+    height: image-height($bc);
+}
+
 #end-content1 {
     top: 282px;
     left: 162px;
@@ -362,6 +379,6 @@ $process-sprite-dimensions: true;
     display: none;
 }
 
-#music-control, #arrow-left, #arrow-right, #city {
+#music-control, #arrow-left, #arrow-right, #city, #detail-content, #bc-content {
     visibility: hidden;
 }
