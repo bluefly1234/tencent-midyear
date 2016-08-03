@@ -4,6 +4,7 @@
 **/
 var jumpTime = 0.8;
 var canSwipe = false;
+var SWIPEDIRECTION;
 // 预加载
 var sourceArr = [
     'images/logo.png',
@@ -224,7 +225,7 @@ function showCover() {
         }
     });
     coverShow.set('#logo', {x: -270, y: -610})
-    .set('#cover', {display: 'block'})
+    .set('#cover', {display: 'block', autoAlpha: 1})
     .add('coverLogo')
     .to('#logo', 0.6, {x: -230, y: -480, ease: Back.easeOut.config(1.2)}, 'coverLogo')
     .from('#cover-content1', 0.6, {autoAlpha: 0, x: '+=240', ease: Back.easeOut.config(1.2)}, 'coverLogo')
@@ -258,7 +259,7 @@ arrowGuide.add('arrowStart')
 
 function showArrow() {
     TweenMax.fromTo(['#arrow-left', '#arrow-right'], 0.5, {autoAlpha: 0}, {autoAlpha: 1, ease: Power1.easeIn, onComplete: function () {
-        arrowGuide.play();
+        arrowGuide.play(0);
     }});
 } // 显示左滑箭头并播放箭头动画
 
@@ -274,7 +275,7 @@ arrowLeftGuide.to($('#arrow-left'), 0.8, {x: '+=30', ease: Power0.easeNone})
 
 function showLeftArrow() {
     TweenMax.fromTo('#arrow-left', 0.5, {autoAlpha: 0}, {autoAlpha: 1, ease: Power1.easeIn, onComplete: function () {
-        arrowLeftGuide.play();
+        arrowLeftGuide.play(0);
     }});
 } // 显示左滑箭头并播放箭头动画
 
@@ -419,12 +420,26 @@ Draggable.create("#process", {type:"scrollTop",
     throwProps:true,
     onDragStart: function () {
         showArrow();
-        // 左滑
-        touch.on($("#process"), 'swipeleft', function(ev){
-          console.log(ev.type + ' process');
-          hideArrow();
-          hideProcess();
-        });
+        canSwipe = true;
+        if (canSwipe) {
+
+            // 左滑
+            touch.on($("#process"), 'swipeleft', function(ev){
+              console.log(ev.type + ' process');
+              SWIPEDIRECTION = 'left';
+              hideArrow();
+              hideProcess();
+            });
+
+            // 左滑
+            touch.on($("#process"), 'swiperight', function(ev){
+              console.log(ev.type + ' process');
+              SWIPEDIRECTION = 'right';
+              hideArrow();
+              hideProcess();
+            });
+
+        }
     }
 });
 
@@ -437,7 +452,16 @@ function hideProcess() {
             wyBreath.pause(0);
             hyyqBreath.pause(0);
         },
-        onComplete: showEnd
+        onComplete: function () {
+            if (SWIPEDIRECTION== 'left') {
+                showEnd();
+                SWIPEDIRECTION='';
+            }else if (SWIPEDIRECTION=='right') {
+                TweenMax.set('#logo', {autoAlpha: 1});
+                showCover();
+                SWIPEDIRECTION='';
+            }
+        }
     });
     processHide.to('#process', 0.4, {autoAlpha: 0})
     .set(['#process', '#process-detail-container'], {display: 'none'})
