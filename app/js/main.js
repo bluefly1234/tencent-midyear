@@ -116,7 +116,7 @@ function showCity() {
     var cityShow = new TimelineMax({
         onComplete: moveLogo
     });
-    cityShow.set('#city', {autoAlpha: 1})
+    cityShow.set('#city', {display: 'block', autoAlpha: 1})
     .add('tencent')
     .fromTo('#city', 0.8, {autoAlpha: 0, y: 640}, {autoAlpha: 1, y: 0}, 'tencent')
     .to('#logo', 0.6, {
@@ -209,19 +209,29 @@ function showCover() {
     var coverShow = new TimelineMax({
         onComplete: function () {
             showArrow();
-            // 左滑
-            touch.on($("#cover"), 'swipeleft', function(ev){
-              console.log(ev.type + ' cover');
-              hideArrow();
-              hideCover();
-            });
+            canSwipe = true;
+            if (canSwipe) {
+                // 左滑
+                touch.on($("#cover"), 'swipeleft', function(ev){
+                    canSwipe = false;
+                    SWIPEDIRECTION = 'left';
+                    console.log(ev.type + ' cover');
+                    hideArrow();
+                    hideCover();
+                });
 
-            // 右滑
-            touch.on($("#cover"), 'swiperight', function(ev){
-              console.log(ev.type + ' cover');
-              hideArrow();
-              window.location.reload();
-            });
+                // 右滑
+                touch.on($("#cover"), 'swiperight', function(ev){
+                    console.log(ev.type + ' cover');
+                    canSwipe = false;
+                    SWIPEDIRECTION = 'right';
+                    hideArrow();
+                    hideCover();
+                    TweenMax.to('#logo', 0.4, {autoAlpha: 0});
+                    // window.location.reload();
+                });
+            }
+
         }
     });
     coverShow.set('#logo', {x: -270, y: -610})
@@ -235,8 +245,21 @@ function showCover() {
 function hideCover() {
     var coverHide = new TimelineMax({
         onStart: function () {
-            logoShake2.play(0);
+            if (SWIPEDIRECTION == 'left') {
+                logoShake2.play(0);
+                SWIPEDIRECTION = '';
+            }
+        },
+        onComplete: function () {
+            if (SWIPEDIRECTION == 'right') {
+                TweenMax.set('#logo', {autoAlpha: 1, x: 0, y: 0});
+                TweenMax.set('#city', { x: 0, y: 0});
+                logoShake1.play(0);
+                SWIPEDIRECTION = '';
+            }
         }
+
+
     });
     coverHide.to('#cover', 0.6, {autoAlpha: 0})
     .set('#cover', {display: 'none'})
@@ -426,6 +449,7 @@ Draggable.create("#process", {type:"scrollTop",
             // 左滑
             touch.on($("#process"), 'swipeleft', function(ev){
               console.log(ev.type + ' process');
+              canSwipe = false;
               SWIPEDIRECTION = 'left';
               hideArrow();
               hideProcess();
@@ -434,6 +458,7 @@ Draggable.create("#process", {type:"scrollTop",
             // 左滑
             touch.on($("#process"), 'swiperight', function(ev){
               console.log(ev.type + ' process');
+              canSwipe = false;
               SWIPEDIRECTION = 'right';
               hideArrow();
               hideProcess();
