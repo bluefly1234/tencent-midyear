@@ -11,7 +11,7 @@ var sourceArr = [
     'images/loading-bg.jpg',
     'images/universal-bg.jpg',
     'images/arrow-left.png',
-    'images/right.png',
+    'images/arrow-right.png',
     'images/bc.png',
     'images/city.png',
     'images/close.png',
@@ -28,10 +28,14 @@ var sourceArr = [
     'images/line.png',
     'images/music-off.png',
     'images/music-on.png',
-    'images/process-s8b97f2c170.png',
+    'images/process-s64cfe0c5a6.png',
     'images/star-bg.jpg',
     'images/wy.png',
     'images/yc.png',
+    'images/cf-light.png',
+    'images/hy-light.png',
+    'images/wy-light.png',
+    'images/hyyq-light.png',
     'media/bgmusic.mp3'
 ]; //需要加载的资源列表
 
@@ -69,6 +73,10 @@ function setImages() {
     $('#arrow-left').css('background-image', 'url(images/arrow-left.png)');
     $('#arrow-right').css('background-image', 'url(images/arrow-right.png)');
     $('#bc-detail').css('background-image', 'url(images/bc.png)');
+    $('#cf-light').css('background-image', 'url(images/cf-light.png)');
+    $('#hy-light').css('background-image', 'url(images/hy-light.png)');
+    $('#wy-light').css('background-image', 'url(images/wy-light.png)');
+    $('#hyyq-light').css('background-image', 'url(images/hyyq-light.png)');
 }
 
 // 音乐初始化
@@ -381,25 +389,25 @@ var cfBreath = new TimelineMax({
     paused: true,
 });
 
-cfBreath.to('#cf', 1.6, {autoAlpha: 0.6, ease: Power1.easeInOut, repeat: -1, yoyo: true});
+cfBreath.to('#cf-light', 0.6, {autoAlpha: 0.1, ease: Power1.easeInOut, repeat: -1, yoyo: true});
 
 var hyBreath = new TimelineMax({
     paused: true,
 });
 
-hyBreath.to('#hy', 1.6, {autoAlpha: 0.5, ease: Power1.easeInOut, repeat: -1, yoyo: true});
+hyBreath.to('#hy-light', 0.6, {autoAlpha: 0.1, ease: Power1.easeInOut, repeat: -1, yoyo: true});
 
 var wyBreath = new TimelineMax({
     paused: true,
 });
 
-wyBreath.to('#wy', 1.6, {autoAlpha: 0.5, ease: Power1.easeInOut, repeat: -1, yoyo: true});
+wyBreath.to('#wy-light', 0.6, {autoAlpha: 0.1, ease: Power1.easeInOut, repeat: -1, yoyo: true});
 
 var hyyqBreath = new TimelineMax({
     paused: true,
 });
 
-hyyqBreath.to('#hyyq', 1.6, {autoAlpha: 0.5, ease: Power1.easeInOut, repeat: -1, yoyo: true});
+hyyqBreath.to('#hyyq-light', 0.6, {autoAlpha: 0.1, ease: Power1.easeInOut, repeat: -1, yoyo: true});
 
 
 // computer抖动

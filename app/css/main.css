@@ -455,49 +455,49 @@ body {
 
 /*=================process start=======================*/
 .process-sprite, .process-cf, .process-hd, .process-hy, .process-hyyq, .process-rc, .process-wy {
-  background-image: url('../images/process-s8b97f2c170.png');
+  background-image: url('../images/process-s64cfe0c5a6.png');
   background-repeat: no-repeat;
 }
 
 .process-cf {
-  background-position: 0 -651px;
-  height: 274px;
-  width: 290px;
+  background-position: 0 -661px;
+  height: 292px;
+  width: 308px;
 }
 
 .process-hd {
-  background-position: 0 -391px;
+  background-position: 0 -401px;
   height: 260px;
   width: 259px;
 }
 
 .process-hy {
-  background-position: 0 -925px;
-  height: 289px;
-  width: 268px;
+  background-position: 0 -953px;
+  height: 308px;
+  width: 300px;
 }
 
 .process-hyyq {
   background-position: 0 0;
-  height: 156px;
-  width: 146px;
+  height: 166px;
+  width: 156px;
 }
 
 .process-rc {
-  background-position: 0 -156px;
+  background-position: 0 -166px;
   height: 235px;
   width: 223px;
 }
 
 .process-wy {
-  background-position: 0 -1214px;
-  height: 301px;
-  width: 277px;
+  background-position: 0 -1261px;
+  height: 315px;
+  width: 294px;
 }
 
 #cf {
-  top: 26px;
-  left: 115px;
+  top: 18px;
+  left: 108px;
 }
 
 #rc {
@@ -506,8 +506,8 @@ body {
 }
 
 #hy {
-  top: 481px;
-  left: 372px;
+  top: 470px;
+  left: 362px;
 }
 
 #hd {
@@ -516,13 +516,41 @@ body {
 }
 
 #wy {
-  top: 1130px;
-  left: 363px;
+  top: 1124px;
+  left: 354px;
 }
 
 #hyyq {
-  top: 1142px;
-  left: 4px;
+  top: 1136px;
+  left: 2px;
+}
+
+#cf-light {
+  top: 38px;
+  left: 132px;
+  width: 252px;
+  height: 253px;
+}
+
+#hy-light {
+  top: 500px;
+  left: 386px;
+  width: 252px;
+  height: 253px;
+}
+
+#wy-light {
+  top: 1154px;
+  left: 374px;
+  width: 252px;
+  height: 253px;
+}
+
+#hyyq-light {
+  top: 1140px;
+  left: 0px;
+  width: 155px;
+  height: 156px;
 }
 
 #process-detail-container {
@@ -555,7 +583,7 @@ body {
   top: 57px;
   left: 57px;
   width: 388px;
-  height: 356px;
+  height: 400px;
   overflow-x: hidden;
   overflow-y: scroll;
   /* has to be scroll, not auto */
@@ -564,7 +592,7 @@ body {
 
 #bc-detail {
   width: 387px;
-  height: 959px;
+  height: 738px;
 }
 
 #end-content1 {

@@ -253,8 +253,8 @@ $process-sprite-dimensions: true;
 @include  all-process-sprites;
 
 #cf {
-    top: 26px;
-    left: 115px;
+    top: 18px;
+    left: 108px;
 }
 
 #rc {
@@ -263,8 +263,8 @@ $process-sprite-dimensions: true;
 }
 
 #hy {
-    top: 481px;
-    left: 372px;
+    top: 470px;
+    left: 362px;
 }
 
 #hd {
@@ -273,13 +273,49 @@ $process-sprite-dimensions: true;
 }
 
 #wy {
-    top: 1130px;
-    left: 363px;
+    top: 1124px;
+    left: 354px;
 }
 
 #hyyq {
-    top: 1142px;
-    left: 4px;
+    top: 1136px;
+    left: 2px;
+}
+
+#cf-light {
+    top: 38px;
+    left: 132px;
+    $cf-light: '../images/cf-light.png';
+    width: image-width($cf-light);
+    height: image-height($cf-light);
+    // background-image: url($cf-light);
+}
+
+#hy-light {
+    top: 500px;
+    left: 386px;
+    $hy-light: '../images/hy-light.png';
+    width: image-width($hy-light);
+    height: image-height($hy-light);
+    // background-image: url($hy-light);
+}
+
+#wy-light {
+    top: 1154px;
+    left: 374px;
+    $wy-light: '../images/wy-light.png';
+    width: image-width($wy-light);
+    height: image-height($wy-light);
+    // background-image: url($wy-light);
+}
+
+#hyyq-light {
+    top: 1140px;
+    left: 0px;
+    $hyyq-light: '../images/hyyq-light.png';
+    width: image-width($hyyq-light);
+    height: image-height($hyyq-light);
+    // background-image: url($hyyq-light);
 }
 
 #process-detail-container {
@@ -316,7 +352,7 @@ $process-sprite-dimensions: true;
     top: 57px;
     left: 57px;
     width: 388px;
-    height: 356px;
+    height: 400px;
     // background: rgba(255, 0, 0, 0.3);
     overflow-x: hidden;
     overflow-y: scroll; /* has to be scroll, not auto */
