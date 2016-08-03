@@ -3,6 +3,7 @@
   Blog: http://kalechao87.github.io/
 **/
 var jumpTime = 0.8;
+var canSwipe = false;
 // 预加载
 var sourceArr = [
     'images/logo.png',
@@ -118,8 +119,8 @@ function showCity() {
     .add('tencent')
     .fromTo('#city', 0.8, {autoAlpha: 0, y: 640}, {autoAlpha: 1, y: 0}, 'tencent')
     .to('#logo', 0.6, {
-        x: '-=30',
-        y: '-=160',
+        x: -30,
+        y: -160,
         ease: Back.easeIn.config(1.6),
         onComplete: function () {
             logoRotation.play(0);
@@ -144,40 +145,48 @@ function moveLogo() {
     logoMove.to('#logo', jumpTime, {
         bezier:
         [
-            {x:'+=40', y: '-=80'},
-            {x: '+=240', y: '+=200'}
+            {x: 10, y: -240},
+            {x: 210, y: 40}
         ],
 
         ease: Back.easeIn.config(1.2)
     })
-    .to(['#city', '#logo'], 0.6, {x: '-=290', y: '-=40'})
-    .to('#logo', 0.6, {x: '+=270', y: '+=100'})
-    .to(['#city', '#logo'], 0.6, {x: '-=290', y: '-=300'})
+    // .to(['#city', '#logo'], 0.6, {x: '-=290', y: '-=40'})
+    .to('#city', 0.6, {x: -290, y: -40})
+    .to('#logo', 0.6, {x: -90, y: 0}, '-=0.6')
+    .to('#logo', 0.6, {x: 180, y: 100})
+    // .to(['#city', '#logo'], 0.6, {x: '-=290', y: '-=300'})
+    .to('#city', 0.6, {x: -580, y: -340})
+    .to('#logo', 0.6, {x: -110, y: -200}, '-=0.6')
     .to('#logo', jumpTime, {
         bezier:
         [
-            {x:'+=80', y: '-=180'},
-            {x: '+=330', y: '-=290'}
+            {x: -30, y: -380},
+            {x: 220, y: -490}
         ],
 
         ease: Back.easeIn.config(1.2)
     })
-    .to(['#city', '#logo'], 0.6, {x: '-=460'})
+    // .to(['#city', '#logo'], 0.6, {x: '-=460'})
+    .to('#city', 0.6, {x: -1040})
+    .to('#logo', 0.6, {x: -240}, '-=0.6')
     .to('#logo', jumpTime, {
         bezier:
         [
-            {x:'+=200', y: '-=40'},
-            {x: '+=510', y: '+=350'}
+            {x: -40, y: -530},
+            {x: 270, y: -140}
         ],
 
         ease: Back.easeIn.config(1.2)
     })
-    .to(['#city', '#logo'], 0.6, {x: '-=400', y: '-=80'})
+    // .to(['#city', '#logo'], 0.6, {x: '-=400', y: '-=80'})
+    .to('#city', 0.6, {x: -1440, y: -420})
+    .to('#logo', 0.6, {x: -130, y: -220}, '-=0.6')
     .to('#logo', jumpTime, {
         bezier:
         [
-            {x:'+=100', y: '-=100'},
-            {x: '+=280', y: '+=500'}
+            {x: -30, y: -320},
+            {x: 150, y: 280}
         ],
 
         ease: Back.easeIn.config(1.2)
@@ -185,8 +194,8 @@ function moveLogo() {
     .to('#logo', jumpTime, {
         bezier:
         [
-            {x:'+=80', y: '+=16'},
-            {x: '+=220', y: '+=220'}
+            {x: 230, y: 296},
+            {x: 370, y: 500}
         ],
 
         ease: Back.easeIn.config(1.2)
@@ -214,10 +223,10 @@ function showCover() {
             });
         }
     });
-    coverShow.set('#logo', {x: '-=640', y: '-=1100'})
+    coverShow.set('#logo', {x: -270, y: -610})
     .set('#cover', {display: 'block'})
     .add('coverLogo')
-    .to('#logo', 0.6, {x: '+=40', y: '+=130', ease: Back.easeOut.config(1.2)}, 'coverLogo')
+    .to('#logo', 0.6, {x: -230, y: -480, ease: Back.easeOut.config(1.2)}, 'coverLogo')
     .from('#cover-content1', 0.6, {autoAlpha: 0, x: '+=240', ease: Back.easeOut.config(1.2)}, 'coverLogo')
     .from('#cover-content2', 0.6, {autoAlpha: 0, y: 200})
 }
@@ -263,7 +272,7 @@ function hideArrow() {
 var arrowLeftGuide = new TimelineMax({yoyo: true, repeat: -1, paused: true});
 arrowLeftGuide.to($('#arrow-left'), 0.8, {x: '+=30', ease: Power0.easeNone})
 
-function showleftArrow() {
+function showLeftArrow() {
     TweenMax.fromTo('#arrow-left', 0.5, {autoAlpha: 0}, {autoAlpha: 1, ease: Power1.easeIn, onComplete: function () {
         arrowLeftGuide.play();
     }});
@@ -281,14 +290,15 @@ function showComputer() {
             computerShake.play(0);
         }
     });
-    computerShow.set('#computer-container', {display: 'block'})
+    computerShow.set('#computer-container', {display: 'block', autoAlpha: 1})
+
     .add('computerStart')
     .fromTo('#computer-container', 0.6, {autoAlpha: 0, scale: 0}, {autoAlpha: 1, scale: 1, ease: Back.easeOut.config(1.6)}, 'computerStart')
     .to('#logo', jumpTime, {
         bezier:
         [
-            {x:'+=80', y: '+=16'},
-            {x: '+=230', y: '+=620'}
+            {x: -150, y: -464},
+            {x: 0, y: 140}
         ],
 
         ease: Bounce.easeOut
@@ -436,10 +446,20 @@ function hideProcess() {
 function showEnd() {
     var endShow = new TimelineMax({
         onComplete: function () {
-            showleftArrow();
+            showLeftArrow();
+            canSwipe = true;
+            if (canSwipe) {
+                // 右滑
+                touch.on($("#end"), 'swiperight', function(ev){
+                    canSwipe = false;
+                    console.log(ev.type + ' end');
+                    hideLeftArrow();
+                    hideEnd();
+                });
+            }
         }
     });
-    endShow.set('#end', {display: 'block', perspective: 500})
+    endShow.set('#end', {display: 'block', autoAlpha: 1,perspective: 500})
     .set('#logo', {scale: 0.8})
     .to('#logo', 0.6, {
         autoAlpha: 1
@@ -448,6 +468,17 @@ function showEnd() {
     .fromTo('#end-content1', 1.2, {autoAlpha: 0, z: -300}, {autoAlpha: 1, z: 0}, '-=0.8')
     .fromTo('#end-content2', 0.6, {autoAlpha: 0, y: 100}, {autoAlpha: 1, y: 0})
 
+}
+
+function hideEnd() {
+    var endHide = new TimelineMax({
+        onComplete: function () {
+            showComputer();
+        }
+    });
+    endHide.to(['#end', '#logo'], 0.6, {autoAlpha: 0})
+    .set('#end', {display: 'none'})
+    .set('#logo', {autoAlpha: 1, x: -230, y: -480}) // 回退时确保位置
 }
 
 (function($) {
