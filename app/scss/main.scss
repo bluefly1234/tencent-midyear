@@ -212,14 +212,14 @@ body {
     background-image: url($computer);
 }
 
-#computer-content {
-    top: 234px;
-    left: 93px;
-    $computer-content: '../images/computer-content.png';
-    width: image-width($computer-content);
-    height: image-height($computer-content);
-    background-image: url($computer-content);
-}
+// #computer-content {
+//     top: 234px;
+//     left: 93px;
+//     $computer-content: '../images/computer-content.png';
+//     width: image-width($computer-content);
+//     height: image-height($computer-content);
+//     background-image: url($computer-content);
+// }
 
 #light {
     top: 0;
@@ -324,7 +324,7 @@ $process-sprite-dimensions: true;
 }
 
 #detail {
-    top: 400px;
+    top: 300px;
     left: 74px;
     $detail: '../images/detail.png';
     width: image-width($detail);
@@ -367,7 +367,7 @@ $process-sprite-dimensions: true;
 
 #end-content1 {
     top: 282px;
-    left: 162px;
+    left: 0;
     $end-content1: '../images/end-content1.png';
     width: image-width($end-content1);
     height: image-height($end-content1);
@@ -393,23 +393,23 @@ $process-sprite-dimensions: true;
 }
 
 
-#arrow-left {
-    left: 10px;
-    bottom: 10px;
-    $arrow-left: '../images/arrow-left.png';
-    width: image-width($arrow-left);
-    height: image-height($arrow-left);
-    // background-image: url($arrow-left);
-}
-
-#arrow-right {
-    right: 10px;
-    bottom: 10px;
-    $arrow-right: '../images/arrow-right.png';
-    width: image-width($arrow-right);
-    height: image-height($arrow-right);
-    // background-image: url($arrow-left);
-}
+// #arrow-left {
+//     left: 10px;
+//     bottom: 10px;
+//     $arrow-left: '../images/arrow-left.png';
+//     width: image-width($arrow-left);
+//     height: image-height($arrow-left);
+//     // background-image: url($arrow-left);
+// }
+//
+// #arrow-right {
+//     right: 10px;
+//     bottom: 10px;
+//     $arrow-right: '../images/arrow-right.png';
+//     width: image-width($arrow-right);
+//     height: image-height($arrow-right);
+//     // background-image: url($arrow-left);
+// }
 
 #cover, #computer-container, #process,  #process-detail-container, #end {
     display: none;

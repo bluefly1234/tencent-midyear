@@ -10,13 +10,12 @@ var sourceArr = [
     'images/logo.png',
     'images/loading-bg.jpg',
     'images/universal-bg.jpg',
-    'images/arrow-left.png',
-    'images/arrow-right.png',
+    // 'images/arrow-left.png',
+    // 'images/arrow-right.png',
     'images/bc.png',
     'images/city.png',
     'images/close.png',
     'images/computer.png',
-    'images/computer-content.png',
     'images/cover-content1.png',
     'images/cover-content2.png',
     'images/detail.png',
@@ -69,9 +68,9 @@ function setImages() {
     $('#city').css('background-image', 'url(images/city.png)');
     $('#music-control').css('background-image', 'url(images/music-off.png)');
     $('#process').css('background-image', 'url(images/star-bg.jpg)');
-    $('#arrow-up').css('background-image', 'url(images/arrow-up.png)');
-    $('#arrow-left').css('background-image', 'url(images/arrow-left.png)');
-    $('#arrow-right').css('background-image', 'url(images/arrow-right.png)');
+    // $('#arrow-up').css('background-image', 'url(images/arrow-up.png)');
+    // $('#arrow-left').css('background-image', 'url(images/arrow-left.png)');
+    // $('#arrow-right').css('background-image', 'url(images/arrow-right.png)');
     $('#bc-detail').css('background-image', 'url(images/bc.png)');
     $('#cf-light').css('background-image', 'url(images/cf-light.png)');
     $('#hy-light').css('background-image', 'url(images/hy-light.png)');
@@ -217,7 +216,7 @@ function moveLogo() {
 function showCover() {
     var coverShow = new TimelineMax({
         onComplete: function () {
-            showArrow();
+            // showArrow();
             canSwipe = true;
             if (canSwipe) {
                 // 左滑
@@ -225,7 +224,7 @@ function showCover() {
                     canSwipe = false;
                     SWIPEDIRECTION = 'left';
                     console.log(ev.type + ' cover');
-                    hideArrow();
+                    // hideArrow();
                     hideCover();
                 });
 
@@ -234,7 +233,7 @@ function showCover() {
                     console.log(ev.type + ' cover');
                     canSwipe = false;
                     SWIPEDIRECTION = 'right';
-                    hideArrow();
+                    // hideArrow();
                     hideCover();
                     TweenMax.to('#logo', 0.4, {autoAlpha: 0});
                     // window.location.reload();
@@ -283,39 +282,39 @@ var logoShake2 = new TimelineMax({
 });
 logoShake2.to('#logo', 0.1, {x: '-=20', ease: Power1.easeInOut});
 
-// 滑动指示箭头动画
-var arrowGuide = new TimelineMax({yoyo: true, repeat: -1, paused: true});
-arrowGuide.add('arrowStart')
-.to($('#arrow-left'), 0.8, {x: '+=30', ease: Power0.easeNone}, 'arrowStart')
-.to($('#arrow-right'), 0.8, {x: '-=30', ease: Power0.easeNone}, 'arrowStart')
-
-function showArrow() {
-    TweenMax.fromTo(['#arrow-left', '#arrow-right'], 0.5, {autoAlpha: 0}, {autoAlpha: 1, ease: Power1.easeIn, onComplete: function () {
-        arrowGuide.play(0);
-    }});
-} // 显示左滑箭头并播放箭头动画
-
-function hideArrow() {
-    TweenMax.to(['#arrow-left', '#arrow-right'], 0.5, {autoAlpha: 0, onComplete: function () {
-        arrowGuide.pause(0);
-    }});
-} // 隐藏左滑箭头并停止箭头动画
-
-// 滑动指示箭头动画
-var arrowLeftGuide = new TimelineMax({yoyo: true, repeat: -1, paused: true});
-arrowLeftGuide.to($('#arrow-left'), 0.8, {x: '+=30', ease: Power0.easeNone})
-
-function showLeftArrow() {
-    TweenMax.fromTo('#arrow-left', 0.5, {autoAlpha: 0}, {autoAlpha: 1, ease: Power1.easeIn, onComplete: function () {
-        arrowLeftGuide.play(0);
-    }});
-} // 显示左滑箭头并播放箭头动画
-
-function hideLeftArrow() {
-    TweenMax.to('#arrow-left', 0.5, {autoAlpha: 0, onComplete: function () {
-        arrowLeftGuide.pause(0);
-    }});
-} // 隐藏左滑箭头并停止箭头动画
+// // 滑动指示箭头动画
+// var arrowGuide = new TimelineMax({yoyo: true, repeat: -1, paused: true});
+// arrowGuide.add('arrowStart')
+// .to($('#arrow-left'), 0.8, {x: '+=30', ease: Power0.easeNone}, 'arrowStart')
+// .to($('#arrow-right'), 0.8, {x: '-=30', ease: Power0.easeNone}, 'arrowStart')
+//
+// function showArrow() {
+//     TweenMax.fromTo(['#arrow-left', '#arrow-right'], 0.5, {autoAlpha: 0}, {autoAlpha: 1, ease: Power1.easeIn, onComplete: function () {
+//         arrowGuide.play(0);
+//     }});
+// } // 显示左滑箭头并播放箭头动画
+//
+// function hideArrow() {
+//     TweenMax.to(['#arrow-left', '#arrow-right'], 0.5, {autoAlpha: 0, onComplete: function () {
+//         arrowGuide.pause(0);
+//     }});
+// } // 隐藏左滑箭头并停止箭头动画
+//
+// // 滑动指示箭头动画
+// var arrowLeftGuide = new TimelineMax({yoyo: true, repeat: -1, paused: true});
+// arrowLeftGuide.to($('#arrow-left'), 0.8, {x: '+=30', ease: Power0.easeNone})
+//
+// function showLeftArrow() {
+//     TweenMax.fromTo('#arrow-left', 0.5, {autoAlpha: 0}, {autoAlpha: 1, ease: Power1.easeIn, onComplete: function () {
+//         arrowLeftGuide.play(0);
+//     }});
+// } // 显示左滑箭头并播放箭头动画
+//
+// function hideLeftArrow() {
+//     TweenMax.to('#arrow-left', 0.5, {autoAlpha: 0, onComplete: function () {
+//         arrowLeftGuide.pause(0);
+//     }});
+// } // 隐藏左滑箭头并停止箭头动画
 
 function showComputer() {
     var computerShow = new TimelineMax({
@@ -336,8 +335,8 @@ function showComputer() {
 
         ease: Bounce.easeOut
     }, '-=0.2')
-    .fromTo('#computer-content', 0.8, {autoAlpha: 0, scale: 0}, {autoAlpha: 1, scale: 1})
-    .fromTo('#light', 0.4 ,{autoAlpha: 0}, {autoAlpha: 1, delay: 1})
+    // .fromTo('#computer-content', 0.8, {autoAlpha: 0, scale: 0}, {autoAlpha: 1, scale: 1})
+    .fromTo('#light', 0.4 ,{autoAlpha: 0}, {autoAlpha: 1})
 }
 
 function showDetail() {
@@ -442,6 +441,28 @@ function showProcess() {
             hyBreath.play(0);
             wyBreath.play(0);
             hyyqBreath.play(0);
+            // showArrow();
+            canSwipe = true;
+            if (canSwipe) {
+
+                // 左滑
+                touch.on($("#process"), 'swipeleft', function(ev){
+                  console.log(ev.type + ' process');
+                  canSwipe = false;
+                  SWIPEDIRECTION = 'left';
+                //   hideArrow();
+                  hideProcess();
+                });
+
+                // 左滑
+                touch.on($("#process"), 'swiperight', function(ev){
+                  console.log(ev.type + ' process');
+                  canSwipe = false;
+                  SWIPEDIRECTION = 'right';
+                //   hideArrow();
+                  hideProcess();
+                });
+            }
         }
     });
     processShow.set('#process', {display: 'block', autoAlpha: 1})
@@ -458,31 +479,31 @@ processFloat.to('#process-all', 2, {y: -60, ease: Power1.easeInOut});
 Draggable.create("#process", {type:"scrollTop",
     edgeResistance:1,
     throwProps:true,
-    onDragStart: function () {
-        showArrow();
-        canSwipe = true;
-        if (canSwipe) {
-
-            // 左滑
-            touch.on($("#process"), 'swipeleft', function(ev){
-              console.log(ev.type + ' process');
-              canSwipe = false;
-              SWIPEDIRECTION = 'left';
-              hideArrow();
-              hideProcess();
-            });
-
-            // 左滑
-            touch.on($("#process"), 'swiperight', function(ev){
-              console.log(ev.type + ' process');
-              canSwipe = false;
-              SWIPEDIRECTION = 'right';
-              hideArrow();
-              hideProcess();
-            });
-
-        }
-    }
+    // onDragStart: function () {
+    //     showArrow();
+    //     canSwipe = true;
+    //     if (canSwipe) {
+    //
+    //         // 左滑
+    //         touch.on($("#process"), 'swipeleft', function(ev){
+    //           console.log(ev.type + ' process');
+    //           canSwipe = false;
+    //           SWIPEDIRECTION = 'left';
+    //           hideArrow();
+    //           hideProcess();
+    //         });
+    //
+    //         // 左滑
+    //         touch.on($("#process"), 'swiperight', function(ev){
+    //           console.log(ev.type + ' process');
+    //           canSwipe = false;
+    //           SWIPEDIRECTION = 'right';
+    //           hideArrow();
+    //           hideProcess();
+    //         });
+    //
+    //     }
+    // }
 });
 
 function hideProcess() {
@@ -512,14 +533,14 @@ function hideProcess() {
 function showEnd() {
     var endShow = new TimelineMax({
         onComplete: function () {
-            showLeftArrow();
+            // showLeftArrow();
             canSwipe = true;
             if (canSwipe) {
                 // 右滑
                 touch.on($("#end"), 'swiperight', function(ev){
                     canSwipe = false;
                     console.log(ev.type + ' end');
-                    hideLeftArrow();
+                    // hideLeftArrow();
                     hideEnd();
                 });
             }
