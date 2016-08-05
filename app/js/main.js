@@ -551,7 +551,7 @@ function showEnd() {
     .to('#logo', 0.6, {
         autoAlpha: 1
     })
-    .to('#logo', 0.8, {x: -70, y: -200, ease: Back.easeOut.config(1.6)})
+    .to('#logo', 0.8, {x: -70, y: -230, ease: Back.easeOut.config(1.6)})
     .fromTo('#end-content1', 1.2, {autoAlpha: 0, z: -300}, {autoAlpha: 1, z: 0}, '-=0.8')
     .fromTo('#end-content2', 0.6, {autoAlpha: 0, y: 100}, {autoAlpha: 1, y: 0})
 

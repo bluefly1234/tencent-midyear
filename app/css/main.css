@@ -588,7 +588,7 @@ body {
 }
 
 #end-content1 {
-  top: 282px;
+  top: 252px;
   left: 0;
   width: 593px;
   height: 509px;
@@ -596,7 +596,7 @@ body {
 }
 
 #end-content2 {
-  bottom: 36px;
+  bottom: 66px;
   left: 200px;
   width: 237px;
   height: 76px;
@@ -604,7 +604,7 @@ body {
 }
 
 #music-control {
-  top: 100px;
+  top: 64px;
   right: 46px;
   width: 72px;
   height: 61px;

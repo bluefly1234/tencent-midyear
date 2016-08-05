@@ -366,7 +366,7 @@ $process-sprite-dimensions: true;
 }
 
 #end-content1 {
-    top: 282px;
+    top: 252px;
     left: 0;
     $end-content1: '../images/end-content1.png';
     width: image-width($end-content1);
@@ -375,7 +375,7 @@ $process-sprite-dimensions: true;
 }
 
 #end-content2 {
-    bottom: 36px;
+    bottom: 66px;
     left: 200px;
     $end-content2: '../images/end-content2.png';
     width: image-width($end-content2);
@@ -384,7 +384,7 @@ $process-sprite-dimensions: true;
 }
 
 #music-control {
-    top: 100px;
+    top: 64px;
     right: 46px;
     $music: '../images/music-off.png';
     width: image-width($music);
