@@ -413,17 +413,10 @@ body {
 }
 
 #computer-container {
-  top: 367px;
+  top: 387px;
   left: 76px;
   width: 494px;
   height: 406px;
-}
-
-#computer {
-  top: 20px;
-  width: 494px;
-  height: 386px;
-  background-image: url("../images/computer.png");
 }
 
 #light {
@@ -520,6 +513,13 @@ body {
 #cf-light {
   top: 38px;
   left: 132px;
+  width: 252px;
+  height: 253px;
+}
+
+#hy-light {
+  top: 500px;
+  left: 386px;
   width: 252px;
   height: 253px;
 }

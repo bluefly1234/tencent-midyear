@@ -319,26 +319,26 @@ logoShake2.to('#logo', 0.1, {x: '-=20', ease: Power1.easeInOut});
 function showComputer() {
     var computerShow = new TimelineMax({
         onComplete: function () {
-            // computerShake.play(0);
-            showProcess();
+            computerShake.play(0);
+            // showProcess();
         }
     });
     computerShow
-    // .set('#computer-container', {display: 'block', autoAlpha: 1})
+    .set('#computer-container', {display: 'block', autoAlpha: 1})
     // .add('computerStart')
     // .fromTo('#computer-container', 0.6, {autoAlpha: 0, scale: 0}, {autoAlpha: 1, scale: 1, ease: Back.easeOut.config(1.6)}, 'computerStart')
     .to('#logo', jumpTime, {
         bezier:
         [
             {x: -150, y: -464},
-            {x: 0, y: 500}
+            {x: 0, y: 0}
         ],
         // ease: Power2.easeOut
         ease: Bounce.easeOut
     }, '-=0.2')
-    .set('#logo', {autoAlpha: 0})
+    // .set('#logo', {autoAlpha: 0})
     // .fromTo('#computer-content', 0.8, {autoAlpha: 0, scale: 0}, {autoAlpha: 1, scale: 1})
-    // .fromTo('#light', 0.4 ,{autoAlpha: 0}, {autoAlpha: 1})
+    .fromTo('#light', 0.4 ,{autoAlpha: 0}, {autoAlpha: 1})
 }
 
 function showDetail() {
@@ -369,11 +369,11 @@ $('#wy').on('touchstart', function () {
     showDetail();
 });
 
-// $('#hy').on('touchstart', function () {
-//     $('#detail-content').css('background-image', 'url(images/yc.png)');
-//     TweenMax.set('#detail-content', {autoAlpha: 1});
-//     showDetail();
-// });
+$('#hy').on('touchstart', function () {
+    $('#detail-content').css('background-image', 'url(images/yc.png)');
+    TweenMax.set('#detail-content', {autoAlpha: 1});
+    showDetail();
+});
 
 $('#hyyq').on('touchstart', function () {
     $('#detail-content').css('background-image', 'url(images/hyyq.png)');
@@ -392,11 +392,11 @@ var cfBreath = new TimelineMax({
 
 cfBreath.to('#cf-light', 0.6, {autoAlpha: 0.1, ease: Power1.easeInOut, repeat: -1, yoyo: true});
 
-// var hyBreath = new TimelineMax({
-//     paused: true,
-// });
-//
-// hyBreath.to('#hy-light', 0.6, {autoAlpha: 0.1, ease: Power1.easeInOut, repeat: -1, yoyo: true});
+var hyBreath = new TimelineMax({
+    paused: true,
+});
+
+hyBreath.to('#hy-light', 0.6, {autoAlpha: 0.1, ease: Power1.easeInOut, repeat: -1, yoyo: true});
 
 var wyBreath = new TimelineMax({
     paused: true,
@@ -412,27 +412,27 @@ hyyqBreath.to('#hyyq-light', 0.6, {autoAlpha: 0.1, ease: Power1.easeInOut, repea
 
 
 // computer抖动
-// var computerShake = new TimelineMax({
-//     paused: true,
-//     repeat: 11,
-//     yoyo: true,
-//     onComplete: hideComputer
-// });
-// computerShake.to('#computer-container', 0.1, {x: '-=30', ease: Power1.easeInOut});
+var computerShake = new TimelineMax({
+    paused: true,
+    repeat: 5,
+    yoyo: true,
+    onComplete: hideComputer
+});
+computerShake.to('#computer-container', 0.1, {x: '-=30', ease: Power1.easeInOut});
 
-// // 隐藏电脑
-// function hideComputer() {
-//     var computerHide = new TimelineMax({
-//         onComplete: showProcess
-//     });
-//     computerHide.add('computerHideStart')
-//     .to('#computer-container', 0.6, {scale: 6, ease: Power3.easeOut, force3D: true}, 'computerHideStart')
-//     .to('#logo', 0.6, {
-//         autoAlpha: 0
-//     }, 'computerHideStart')
-//     .to('#computer-container', 0.4, {autoAlpha: 0})
-//     .set('#computer-container', {display: 'none', scale: 0})
-// }
+// 隐藏电脑
+function hideComputer() {
+    var computerHide = new TimelineMax({
+        onComplete: showProcess
+    });
+    computerHide.add('computerHideStart')
+    .to('#computer-container', 0.6, {scale: 6, ease: Power3.easeOut, force3D: true}, 'computerHideStart')
+    .to('#logo', 0.6, {
+        autoAlpha: 0
+    }, 'computerHideStart')
+    .to('#computer-container', 0.4, {autoAlpha: 0})
+    .set('#computer-container', {display: 'none', scale: 1})
+}
 
 // 显示流程界面
 function showProcess() {
@@ -440,7 +440,7 @@ function showProcess() {
         onComplete: function () {
             processFloat.play(0);
             cfBreath.play(0);
-            // hyBreath.play(0);
+            hyBreath.play(0);
             wyBreath.play(0);
             hyyqBreath.play(0);
             // showArrow();
@@ -513,7 +513,7 @@ function hideProcess() {
         onStart: function () {
             processFloat.pause(0);
             cfBreath.pause(0);
-            // hyBreath.pause(0);
+            hyBreath.pause(0);
             wyBreath.pause(0);
             hyyqBreath.pause(0);
         },

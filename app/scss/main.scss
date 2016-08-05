@@ -198,19 +198,20 @@ body {
 }
 
 #computer-container {
-    top: 367px;
+    // top: 367px;
+    top: 387px;
     left: 76px;
     width: 494px;
     height: 406px;
 }
 
-#computer {
-    top: 20px;
-    $computer: '../images/computer.png';
-    width: image-width($computer);
-    height: image-height($computer);
-    background-image: url($computer);
-}
+// #computer {
+//     top: 20px;
+//     $computer: '../images/computer.png';
+//     width: image-width($computer);
+//     height: image-height($computer);
+//     background-image: url($computer);
+// }
 
 // #computer-content {
 //     top: 234px;
@@ -291,14 +292,14 @@ $process-sprite-dimensions: true;
     // background-image: url($cf-light);
 }
 
-// #hy-light {
-//     top: 500px;
-//     left: 386px;
-//     $hy-light: '../images/hy-light.png';
-//     width: image-width($hy-light);
-//     height: image-height($hy-light);
-//     // background-image: url($hy-light);
-// }
+#hy-light {
+    top: 500px;
+    left: 386px;
+    $hy-light: '../images/hy-light.png';
+    width: image-width($hy-light);
+    height: image-height($hy-light);
+    // background-image: url($hy-light);
+}
 
 #wy-light {
     top: 1154px;
