@@ -179,7 +179,7 @@ body {
     // background-image: url($city);
 }
 
-#cover-content1 {
+#cover-content1, #end-content0 {
     top: 72px;
     left: 165px;
     $cover-content1: '../images/cover-content1.png';
@@ -291,14 +291,14 @@ $process-sprite-dimensions: true;
     // background-image: url($cf-light);
 }
 
-#hy-light {
-    top: 500px;
-    left: 386px;
-    $hy-light: '../images/hy-light.png';
-    width: image-width($hy-light);
-    height: image-height($hy-light);
-    // background-image: url($hy-light);
-}
+// #hy-light {
+//     top: 500px;
+//     left: 386px;
+//     $hy-light: '../images/hy-light.png';
+//     width: image-width($hy-light);
+//     height: image-height($hy-light);
+//     // background-image: url($hy-light);
+// }
 
 #wy-light {
     top: 1154px;
@@ -366,8 +366,8 @@ $process-sprite-dimensions: true;
 }
 
 #end-content1 {
-    top: 252px;
-    left: 0;
+    top: 363px;
+    left: 111px;
     $end-content1: '../images/end-content1.png';
     width: image-width($end-content1);
     height: image-height($end-content1);

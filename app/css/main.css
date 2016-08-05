@@ -396,7 +396,7 @@ body {
   height: 1067px;
 }
 
-#cover-content1 {
+#cover-content1, #end-content0 {
   top: 72px;
   left: 165px;
   width: 183px;
@@ -524,13 +524,6 @@ body {
   height: 253px;
 }
 
-#hy-light {
-  top: 500px;
-  left: 386px;
-  width: 252px;
-  height: 253px;
-}
-
 #wy-light {
   top: 1154px;
   left: 374px;
@@ -588,10 +581,10 @@ body {
 }
 
 #end-content1 {
-  top: 252px;
-  left: 0;
-  width: 593px;
-  height: 509px;
+  top: 363px;
+  left: 111px;
+  width: 422px;
+  height: 283px;
   background-image: url("../images/end-content1.png");
 }
 
