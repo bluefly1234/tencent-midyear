@@ -199,10 +199,14 @@ body {
 
 #computer-container {
     // top: 367px;
-    top: 387px;
-    left: 76px;
-    width: 494px;
-    height: 406px;
+    top: 537px;
+    left: 289px;
+    width: 50px;
+    height: 50px;
+    @include border-radius(30px);
+    background: #ffffff;
+    // width: 494px;
+    // height: 406px;
 }
 
 // #computer {
@@ -222,14 +226,14 @@ body {
 //     background-image: url($computer-content);
 // }
 
-#light {
-    top: 0;
-    left: 31px;
-    $light: '../images/light.png';
-    width: image-width($light);
-    height: image-height($light);
-    background-image: url($light);
-}
+// #light {
+//     top: 0;
+//     left: 31px;
+//     $light: '../images/light.png';
+//     width: image-width($light);
+//     height: image-height($light);
+//     background-image: url($light);
+// }
 
 #process {
     $process: '../images/star-bg.jpg';

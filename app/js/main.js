@@ -319,26 +319,27 @@ logoShake2.to('#logo', 0.1, {x: '-=20', ease: Power1.easeInOut});
 function showComputer() {
     var computerShow = new TimelineMax({
         onComplete: function () {
-            computerShake.play(0);
+            // computerShake.play(0);
             // showProcess();
+            hideComputer();
         }
     });
     computerShow
     .set('#computer-container', {display: 'block', autoAlpha: 1})
     // .add('computerStart')
     // .fromTo('#computer-container', 0.6, {autoAlpha: 0, scale: 0}, {autoAlpha: 1, scale: 1, ease: Back.easeOut.config(1.6)}, 'computerStart')
-    .to('#logo', jumpTime, {
+    .to('#logo', 0.3, {
         bezier:
         [
             {x: -150, y: -464},
             {x: 0, y: 0}
         ],
         // ease: Power2.easeOut
-        ease: Bounce.easeOut
+        // ease: Bounce.easeOut
     }, '-=0.2')
     // .set('#logo', {autoAlpha: 0})
     // .fromTo('#computer-content', 0.8, {autoAlpha: 0, scale: 0}, {autoAlpha: 1, scale: 1})
-    .fromTo('#light', 0.4 ,{autoAlpha: 0}, {autoAlpha: 1})
+    .fromTo('#computer-container', 0.2 ,{autoAlpha: 0, scale: 0}, {autoAlpha: 1, scale: 1})
 }
 
 function showDetail() {
@@ -426,7 +427,7 @@ function hideComputer() {
         onComplete: showProcess
     });
     computerHide.add('computerHideStart')
-    .to('#computer-container', 0.6, {scale: 6, ease: Power3.easeOut, force3D: true}, 'computerHideStart')
+    .to('#computer-container', 0.6, {scale: 60, ease: Power3.easeOut, force3D: true}, 'computerHideStart')
     .to('#logo', 0.6, {
         autoAlpha: 0
     }, 'computerHideStart')

@@ -413,18 +413,14 @@ body {
 }
 
 #computer-container {
-  top: 387px;
-  left: 76px;
-  width: 494px;
-  height: 406px;
-}
-
-#light {
-  top: 0;
-  left: 31px;
-  width: 432px;
-  height: 319px;
-  background-image: url("../images/light.png");
+  top: 537px;
+  left: 289px;
+  width: 50px;
+  height: 50px;
+  -moz-border-radius: 30px;
+  -webkit-border-radius: 30px;
+  border-radius: 30px;
+  background: #ffffff;
 }
 
 #process {
