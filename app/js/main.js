@@ -245,7 +245,7 @@ function showCover() {
     coverShow.set('#logo', {x: -270, y: -610})
     .set('#cover', {display: 'block', autoAlpha: 1})
     .add('coverLogo')
-    .to('#logo', 0.6, {x: -230, y: -480, ease: Back.easeOut.config(1.2)}, 'coverLogo')
+    .to('#logo', 0.6, {x: -218, y: -464, ease: Back.easeOut.config(1.2)}, 'coverLogo')
     .from('#cover-content1', 0.6, {autoAlpha: 0, x: '+=240', ease: Back.easeOut.config(1.2)}, 'coverLogo')
     .from('#cover-content2', 0.6, {autoAlpha: 0, y: 200})
 }
@@ -551,7 +551,7 @@ function showEnd() {
     .to('#logo', 0.6, {
         autoAlpha: 1
     })
-    .to('#logo', 0.8, {x: -60, y: -200, ease: Back.easeOut.config(1.6)})
+    .to('#logo', 0.8, {x: -70, y: -200, ease: Back.easeOut.config(1.6)})
     .fromTo('#end-content1', 1.2, {autoAlpha: 0, z: -300}, {autoAlpha: 1, z: 0}, '-=0.8')
     .fromTo('#end-content2', 0.6, {autoAlpha: 0, y: 100}, {autoAlpha: 1, y: 0})
 
