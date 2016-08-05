@@ -132,7 +132,7 @@ function showCity() {
         y: -160,
         ease: Back.easeIn.config(1.6),
         onComplete: function () {
-            logoRotation.play(0);
+            // logoRotation.play(0);
         }
     }, 'tencent')
 }
@@ -148,7 +148,7 @@ function moveLogo() {
     var logoMove = new TimelineMax({
         onComplete: function () {
             showCover();
-            logoRotation.pause(0);
+            // logoRotation.pause(0);
         }
     });
     logoMove.to('#logo', jumpTime, {
@@ -160,24 +160,20 @@ function moveLogo() {
 
         ease: Back.easeIn.config(1.2)
     })
-    // .to(['#city', '#logo'], 0.6, {x: '-=290', y: '-=40'})
+
     .to('#city', 0.6, {x: -290, y: -40})
     .to('#logo', 0.6, {x: -90, y: 0}, '-=0.6')
-    .to('#logo', 0.6, {x: 180, y: 100})
-    // .to(['#city', '#logo'], 0.6, {x: '-=290', y: '-=300'})
-    .to('#city', 0.6, {x: -580, y: -340})
-    .to('#logo', 0.6, {x: -110, y: -200}, '-=0.6')
     .to('#logo', jumpTime, {
         bezier:
         [
-            {x: -30, y: -380},
-            {x: 220, y: -490}
+            {x: -30, y: -180},
+            {x: 40, y: -490}
         ],
 
         ease: Back.easeIn.config(1.2)
     })
-    // .to(['#city', '#logo'], 0.6, {x: '-=460'})
-    .to('#city', 0.6, {x: -1040})
+    .to('#city', 0.6, {x: -760, y: -340}, '-=0.2')
+    .to('#city', 0.6, {x: -1040}, '+=0.2')
     .to('#logo', 0.6, {x: -240}, '-=0.6')
     .to('#logo', jumpTime, {
         bezier:
@@ -188,7 +184,6 @@ function moveLogo() {
 
         ease: Back.easeIn.config(1.2)
     })
-    // .to(['#city', '#logo'], 0.6, {x: '-=400', y: '-=80'})
     .to('#city', 0.6, {x: -1440, y: -420})
     .to('#logo', 0.6, {x: -130, y: -220}, '-=0.6')
     .to('#logo', jumpTime, {
@@ -203,12 +198,12 @@ function moveLogo() {
     .to('#logo', jumpTime, {
         bezier:
         [
-            {x: 230, y: 296},
-            {x: 370, y: 500}
+            {x: 230, y: -200},
+            {x: 370, y: -400}
         ],
 
         ease: Back.easeIn.config(1.2)
-    })
+    }, '+=0.1')
     .to('#city', 0.6, {autoAlpha: 0})
     .set('#city', {display: 'none'})
 }
@@ -242,7 +237,7 @@ function showCover() {
 
         }
     });
-    coverShow.set('#logo', {x: -270, y: -610})
+    coverShow.set('#logo', {x: -370, y: -400})
     .set('#cover', {display: 'block', autoAlpha: 1})
     .add('coverLogo')
     .to('#logo', 0.6, {x: -218, y: -464, ease: Back.easeOut.config(1.2)}, 'coverLogo')
