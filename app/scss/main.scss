@@ -224,8 +224,8 @@ body {
 }
 
 #logo-tl {
-    top: 40px;
-    left: 40px;
+    top: -40px;
+    left: -40px;
     $logo-tl: '../images/logotl.png';
     width: image-width($logo-tl);
     height: image-height($logo-tl);
@@ -233,8 +233,8 @@ body {
 }
 
 #logo-tr {
-    top: 40px;
-    right: 40px;
+    top: -40px;
+    right: -40px;
     $logo-tr: '../images/logotr.png';
     width: image-width($logo-tr);
     height: image-height($logo-tr);
@@ -242,8 +242,8 @@ body {
 }
 
 #logo-bl {
-    bottom: 40px;
-    left: 40px;
+    bottom: -40px;
+    left: -40px;
     $logo-bl: '../images/logobl.png';
     width: image-width($logo-bl);
     height: image-height($logo-bl);
@@ -251,8 +251,8 @@ body {
 }
 
 #logo-br {
-    bottom: 40px;
-    right: 40px;
+    bottom: -40px;
+    right: -40px;
     $logo-br: '../images/logobr.png';
     width: image-width($logo-br);
     height: image-height($logo-br);

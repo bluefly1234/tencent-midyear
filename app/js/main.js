@@ -7,8 +7,8 @@ var canSwipe = false;
 var SWIPEDIRECTION;
 var ww = window.innerWidth;
 var wh = window.innerHeight;
-var dx = ww/2-40-86;
-var dy = wh/2-40-86;
+var dx = ww/2+40-86;
+var dy = wh/2+40-86;
 console.log(ww, wh);
 // 预加载
 var sourceArr = [
@@ -285,7 +285,7 @@ function showLogos() {
         onComplete: showProcess
     });
     logoAn.set('#logos', {display: 'block', autoAlpha: 1})
-    .fromTo('.logo-part', 0.6, {autoAlpha: 0}, {autoAlpha: 1})
+    .fromTo('.logo-part', 0.1, {autoAlpha: 0}, {autoAlpha: 1})
     .add('logoStart')
     .fromTo('#logo-tl', 0.8, {x: 0, y: 0}, {x: dx, y: dy, ease: Back.easeOut.config(0.8)}, 'logoStart')
     .fromTo('#logo-tr', 0.8, {x: 0, y: 0}, {x: -dx, y: dy, ease: Back.easeOut.config(0.8)}, 'logoStart')

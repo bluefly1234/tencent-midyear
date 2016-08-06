@@ -440,29 +440,29 @@ body {
 }
 
 #logo-tl {
-  top: 40px;
-  left: 40px;
+  top: -40px;
+  left: -40px;
   width: 79px;
   height: 78px;
 }
 
 #logo-tr {
-  top: 40px;
-  right: 40px;
+  top: -40px;
+  right: -40px;
   width: 79px;
   height: 78px;
 }
 
 #logo-bl {
-  bottom: 40px;
-  left: 40px;
+  bottom: -40px;
+  left: -40px;
   width: 79px;
   height: 78px;
 }
 
 #logo-br {
-  bottom: 40px;
-  right: 40px;
+  bottom: -40px;
+  right: -40px;
   width: 79px;
   height: 78px;
 }
