@@ -209,6 +209,57 @@ body {
     // height: 406px;
 }
 
+#dot {
+    // top: 367px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    @include transform(translate3d(-50%, -50%, 0));
+    width: 111px;
+    height: 111px;
+    @include border-radius(60px);
+    background: #ffffff;
+    // width: 494px;
+    // height: 406px;
+}
+
+#logo-tl {
+    top: 40px;
+    left: 40px;
+    $logo-tl: '../images/logotl.png';
+    width: image-width($logo-tl);
+    height: image-height($logo-tl);
+    // background-image: url($logo-tl);
+}
+
+#logo-tr {
+    top: 40px;
+    right: 40px;
+    $logo-tr: '../images/logotr.png';
+    width: image-width($logo-tr);
+    height: image-height($logo-tr);
+    // background-image: url($logo-tr);
+}
+
+#logo-bl {
+    bottom: 40px;
+    left: 40px;
+    $logo-bl: '../images/logobl.png';
+    width: image-width($logo-bl);
+    height: image-height($logo-bl);
+    // background-image: url($logo-bl);
+}
+
+#logo-br {
+    bottom: 40px;
+    right: 40px;
+    $logo-br: '../images/logobr.png';
+    width: image-width($logo-br);
+    height: image-height($logo-br);
+    // background-image: url($logo-br);
+}
+
+
 // #computer {
 //     top: 20px;
 //     $computer: '../images/computer.png';
@@ -416,7 +467,7 @@ $process-sprite-dimensions: true;
 //     // background-image: url($arrow-left);
 // }
 
-#cover, #computer-container, #process,  #process-detail-container, #end {
+#cover, #computer-container, #process,  #process-detail-container, #end, #logos {
     display: none;
 }
 

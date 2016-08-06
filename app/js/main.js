@@ -5,13 +5,16 @@
 var jumpTime = 0.8;
 var canSwipe = false;
 var SWIPEDIRECTION;
+var ww = window.innerWidth;
+var wh = window.innerHeight;
+var dx = ww/2-40-86;
+var dy = wh/2-40-86;
+console.log(ww, wh);
 // 预加载
 var sourceArr = [
     'images/logo.png',
     'images/loading-bg.jpg',
     'images/universal-bg.jpg',
-    // 'images/arrow-left.png',
-    // 'images/arrow-right.png',
     'images/bc.png',
     'images/city.png',
     'images/close.png',
@@ -25,6 +28,10 @@ var sourceArr = [
     'images/icon.jpg',
     'images/light.png',
     'images/line.png',
+    'images/logotl.png',
+    'images/logotr.png',
+    'images/logobl.png',
+    'images/logobr.png',
     'images/music-off.png',
     'images/music-on.png',
     'images/process-s64cfe0c5a6.png',
@@ -76,6 +83,10 @@ function setImages() {
     $('#hy-light').css('background-image', 'url(images/hy-light.png)');
     $('#wy-light').css('background-image', 'url(images/wy-light.png)');
     $('#hyyq-light').css('background-image', 'url(images/hyyq-light.png)');
+    $('#logo-tl').css('background-image', 'url(images/logotl.png)');
+    $('#logo-tr').css('background-image', 'url(images/logotr.png)');
+    $('#logo-bl').css('background-image', 'url(images/logobl.png)');
+    $('#logo-br').css('background-image', 'url(images/logobr.png)');
 }
 
 // 音乐初始化
@@ -249,7 +260,8 @@ function hideCover() {
     var coverHide = new TimelineMax({
         onStart: function () {
             if (SWIPEDIRECTION == 'left') {
-                logoShake2.play(0);
+                // logoShake2.play(0);
+                showLogos();
                 SWIPEDIRECTION = '';
             }
         },
@@ -264,8 +276,29 @@ function hideCover() {
 
 
     });
-    coverHide.to('#cover', 0.6, {autoAlpha: 0})
+    coverHide.to(['#cover', '#logo'], 0.6, {autoAlpha: 0})
     .set('#cover', {display: 'none'})
+}
+
+function showLogos() {
+    var logoAn = new TimelineMax({
+        onComplete: showProcess
+    });
+    logoAn.set('#logos', {display: 'block', autoAlpha: 1})
+    .fromTo('.logo-part', 0.6, {autoAlpha: 0}, {autoAlpha: 1})
+    .add('logoStart')
+    .fromTo('#logo-tl', 0.8, {x: 0, y: 0}, {x: dx, y: dy, ease: Back.easeOut.config(0.8)}, 'logoStart')
+    .fromTo('#logo-tr', 0.8, {x: 0, y: 0}, {x: -dx, y: dy, ease: Back.easeOut.config(0.8)}, 'logoStart')
+    .fromTo('#logo-bl', 0.8, {x: 0, y: 0}, {x: dx, y: -dy, ease: Back.easeOut.config(0.8)}, 'logoStart')
+    .fromTo('#logo-br', 0.8, {x: 0, y: 0}, {x: -dx, y: -dy, ease: Back.easeOut.config(0.8)}, 'logoStart')
+    .fromTo('#dot', 0.3 ,{autoAlpha: 0, scale: 0}, {autoAlpha: 1, scale: 1})
+    .add('logoHideStart')
+    .to('#dot', 0.8, {scale: 60, ease: Power3.easeOut, force3D: true}, 'logoHideStart')
+    .to('.logo-part', 0.6, {
+        autoAlpha: 0
+    }, 'logoHideStart')
+    .to('#dot', 0.4, {autoAlpha: 0})
+    .set('#logos', {display: 'none', autoAlpha: 0})
 }
 
 // 二次抖动
@@ -545,14 +578,15 @@ function showEnd() {
         }
     });
     endShow.set('#end', {display: 'block', autoAlpha: 1,perspective: 500})
-    .set('#logo', {x: -270, y: -610})
+    // .set('#logo', {x: -270, y: -610})
+    .set('#logo', {x: 0, y: 0})
     // .set('#logo', {scale: 0.8})
-    .to('#logo', 0.1, {
+    .to('#logo', 0.3, {
         autoAlpha: 1
     })
     .add('endLogo')
-    .to('#logo', 0.6, {x: -218, y: -464, ease: Back.easeOut.config(1.2)}, 'endLogo')
-    .from('#end-content0', 0.6, {autoAlpha: 0, x: '+=240', ease: Back.easeOut.config(1.2)}, 'endLogo')
+    .to('#logo', 0.8, {x: -218, y: -464, ease: Back.easeOut.config(1.2)}, 'endLogo')
+    .from('#end-content0', 0.8, {autoAlpha: 0, x: '+=240', ease: Back.easeOut.config(1.2)}, 'endLogo')
     // .to('#logo', 0.8, {x: -70, y: -230, ease: Back.easeOut.config(1.6)})
     .fromTo('#end-content1', 1.2, {autoAlpha: 0, z: -300}, {autoAlpha: 1, z: 0}, '-=0.2')
     .fromTo('#end-content2', 0.6, {autoAlpha: 0, y: 100}, {autoAlpha: 1, y: 0}, '-=1.2')
